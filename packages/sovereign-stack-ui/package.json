@@ -1,0 +1,30 @@
+{
+  "name": "@sovereign-stack/ui",
+  "version": "1.0.0",
+  "description": "Shared UI components for Sovereign Stack ecosystem sites",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./header": "./components/ecosystem-header.tsx",
+    "./footer": "./components/ecosystem-footer.tsx",
+    "./dropdown": "./components/ecosystem-dropdown.tsx",
+    "./pills": "./components/ecosystem-pills.tsx",
+    "./styles": "./styles.css"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@sovereign-stack/config": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "next": ">=14",
+    "clsx": ">=2.0.0",
+    "tailwind-merge": ">=2.0.0"
+  },
+  "files": ["components/", "hooks/", "lib/", "*.ts", "*.css"]
+}

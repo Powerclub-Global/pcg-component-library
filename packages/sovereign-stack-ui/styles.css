@@ -1,0 +1,26 @@
+/* Sovereign Stack shared gradient utilities */
+.text-gradient-sovereign {
+  background: linear-gradient(135deg, var(--sovereign-gold), var(--sovereign-gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Status dot */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.online {
+  background-color: var(--status-success);
+  box-shadow: 0 0 6px var(--status-success);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

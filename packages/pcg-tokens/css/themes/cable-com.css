@@ -1,0 +1,8 @@
+/* Cable-Com */
+:root {
+  --color-primary: #003366;
+  --color-primary-foreground: #f8fafc;
+  --color-accent: #FF6A00;
+  --color-accent-foreground: #ffffff;
+  --font-display: 'Oswald', system-ui, sans-serif;
+}

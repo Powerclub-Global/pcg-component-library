@@ -1,0 +1,35 @@
+{
+  "name": "@pcg/ui",
+  "version": "1.0.0",
+  "description": "Shared component library for PowerClub Global ecosystem",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./ui/*": "./components/ui/*.tsx",
+    "./layout/*": "./components/layout/*.tsx",
+    "./blocks/*": "./components/blocks/*.tsx",
+    "./commerce/*": "./components/commerce/*.tsx",
+    "./hooks/*": "./hooks/*.ts",
+    "./lib/cn": "./lib/cn.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@pcg/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "@radix-ui/react-slot": ">=1.0.0",
+    "class-variance-authority": ">=0.7.0",
+    "clsx": ">=2.0.0",
+    "tailwind-merge": ">=2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dropzone": { "optional": true }
+  },
+  "files": ["components/", "hooks/", "lib/", "index.ts"]
+}

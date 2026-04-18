@@ -1,0 +1,8 @@
+/* Fine Art Society */
+:root {
+  --color-primary: #1a1a22;
+  --color-primary-foreground: #f8fafc;
+  --color-accent: #b4914b;
+  --color-accent-foreground: #ffffff;
+  --font-display: 'Cinzel', serif;
+}

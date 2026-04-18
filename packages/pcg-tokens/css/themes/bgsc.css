@@ -1,0 +1,8 @@
+/* BGSC */
+:root {
+  --color-primary: #0D0D0D;
+  --color-primary-foreground: #F5F5F3;
+  --color-accent: #8F0000;
+  --color-accent-foreground: #ffffff;
+  --font-display: 'Archivo Black', system-ui, sans-serif;
+}

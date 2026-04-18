@@ -1,0 +1,20 @@
+{
+  "name": "@pcg/tokens",
+  "version": "1.0.0",
+  "description": "Unified design tokens for PowerClub Global ecosystem",
+  "main": "index.ts",
+  "types": "types.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./css/*": "./css/*",
+    "./tailwind-preset": "./tailwind-preset.ts"
+  },
+  "files": ["css/", "tailwind-preset.ts", "index.ts", "types.ts"],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3.0.0"
+  }
+}

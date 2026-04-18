@@ -1,0 +1,8 @@
+/* Blackrock GO */
+:root {
+  --color-primary: #0B0B0B;
+  --color-primary-foreground: #f8fafc;
+  --color-accent: #D8B56D;
+  --color-accent-foreground: #0B0B0B;
+  --font-display: system-ui, sans-serif;
+}

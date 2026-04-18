@@ -1,0 +1,21 @@
+{
+  "name": "pcg-design-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Unified design system and component library for the PowerClub Global ecosystem",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0"
+  }
+}

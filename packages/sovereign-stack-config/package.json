@@ -1,0 +1,18 @@
+{
+  "name": "@sovereign-stack/config",
+  "version": "1.0.0",
+  "description": "Canonical ecosystem configuration for Sovereign Stack projects",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./projects": "./projects.ts",
+    "./colors": "./colors.ts",
+    "./types": "./types.ts"
+  },
+  "files": ["*.ts"],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  }
+}

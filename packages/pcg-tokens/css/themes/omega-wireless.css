@@ -1,0 +1,8 @@
+/* Omega Wireless */
+:root {
+  --color-primary: #0a0a0a;
+  --color-primary-foreground: #f8fafc;
+  --color-accent: #f5c542;
+  --color-accent-foreground: #0a0a0a;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+}
