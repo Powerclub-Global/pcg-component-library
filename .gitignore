@@ -1,7 +1,9 @@
 node_modules/
 dist/
 .turbo/
+.next/
 *.tsbuildinfo
 .DS_Store
 .env
 .env.local
+next-env.d.ts
