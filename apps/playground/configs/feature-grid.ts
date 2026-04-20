@@ -5,6 +5,7 @@ export const featureGridConfig: ComponentConfig = {
   slug: "feature-grid",
   description: "Grid of feature cards with icons",
   category: "block",
+  sourcePath: "packages/pcg-ui/components/blocks/feature-grid.tsx",
   controls: [
     { name: "heading", type: "text", label: "Heading", defaultValue: "Why Choose Us", group: "Content" },
     { name: "subheading", type: "text", label: "Subheading", defaultValue: "Built for scale, designed for developers.", group: "Content" },

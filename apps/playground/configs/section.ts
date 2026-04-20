@@ -5,6 +5,7 @@ export const sectionConfig: ComponentConfig = {
   slug: "section",
   description: "Generic section wrapper with title, subtitle, and centered layout option",
   category: "ui",
+  sourcePath: "packages/pcg-ui/components/ui/section.tsx",
   controls: [
     { name: "title", type: "text", label: "Title", defaultValue: "Our Features" },
     { name: "subtitle", type: "text", label: "Subtitle", defaultValue: "Everything you need to build modern applications." },

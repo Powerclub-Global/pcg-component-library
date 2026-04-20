@@ -5,6 +5,7 @@ export const paginationConfig: ComponentConfig = {
   slug: "pagination",
   description: "Page navigation with ellipsis and prev/next buttons",
   category: "ui",
+  sourcePath: "packages/pcg-ui/components/ui/pagination.tsx",
   controls: [
     { name: "page", type: "number", label: "Current Page", defaultValue: 1 },
     { name: "pages", type: "number", label: "Total Pages", defaultValue: 10 },

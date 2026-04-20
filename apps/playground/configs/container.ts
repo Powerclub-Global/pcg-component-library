@@ -5,6 +5,7 @@ export const containerConfig: ComponentConfig = {
   slug: "container",
   description: "Responsive container with configurable max-width",
   category: "layout",
+  sourcePath: "packages/pcg-ui/components/layout/container.tsx",
   controls: [
     {
       name: "maxWidth",

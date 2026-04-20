@@ -5,6 +5,7 @@ export const copyButtonConfig: ComponentConfig = {
   slug: "copy-button",
   description: "Copy-to-clipboard button with feedback state",
   category: "ui",
+  sourcePath: "packages/pcg-ui/components/ui/copy-button.tsx",
   controls: [
     { name: "text", type: "text", label: "Text to Copy", defaultValue: "npm install @pcg/ui" },
     { name: "label", type: "text", label: "Button Label", defaultValue: "Copy" },

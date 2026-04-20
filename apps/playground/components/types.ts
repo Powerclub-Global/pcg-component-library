@@ -13,6 +13,8 @@ export type ComponentConfig = {
   slug: string;
   description: string;
   category: "ui" | "layout" | "block" | "commerce";
+  /** Path to source .tsx file, relative to monorepo root */
+  sourcePath: string;
   controls: ControlField[];
   /** Static props that are always passed but not editable */
   staticProps?: Record<string, unknown>;

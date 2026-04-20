@@ -5,6 +5,7 @@ export const ctaConfig: ComponentConfig = {
   slug: "cta",
   description: "Call-to-action section with heading, description, and action buttons",
   category: "block",
+  sourcePath: "packages/pcg-ui/components/blocks/cta-section.tsx",
   controls: [
     {
       name: "heading",

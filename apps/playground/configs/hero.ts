@@ -5,6 +5,7 @@ export const heroConfig: ComponentConfig = {
   slug: "hero",
   description: "Full-width hero section with headline, CTAs, and background variants",
   category: "block",
+  sourcePath: "packages/pcg-ui/components/blocks/hero-section.tsx",
   controls: [
     {
       name: "eyebrow",

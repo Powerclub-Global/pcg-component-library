@@ -5,6 +5,7 @@ export const newsletterConfig: ComponentConfig = {
   slug: "newsletter",
   description: "Email signup form with 3 layout variants",
   category: "block",
+  sourcePath: "packages/pcg-ui/components/blocks/newsletter-signup.tsx",
   controls: [
     { name: "variant", type: "select", label: "Variant", options: ["inline", "card", "footer"], defaultValue: "card", group: "Appearance" },
     { name: "title", type: "text", label: "Title", defaultValue: "Subscribe to Our Newsletter", group: "Content" },

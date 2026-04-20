@@ -62,7 +62,7 @@ export function ComponentForm({
               type="text"
               value={childrenValue ?? ""}
               onChange={(e) => onChildrenChange(e.target.value)}
-              className="w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-2 text-sm text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none"
+              className="w-full rounded-lg border border-neutral-800 bg-transparent px-3 py-2 text-sm text-white focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none"
             />
           </label>
         </fieldset>
@@ -81,7 +81,7 @@ function FieldRenderer({
   onChange: (value: unknown) => void;
 }) {
   const inputClass =
-    "w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-2 text-sm text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none";
+    "w-full rounded-lg border border-neutral-800 bg-transparent px-3 py-2 text-sm text-white focus:border-violet-500 focus:ring-1 focus:ring-violet-500 outline-none";
 
   switch (field.type) {
     case "text":
@@ -141,7 +141,7 @@ function FieldRenderer({
             aria-checked={Boolean(value)}
             onClick={() => onChange(!value)}
             className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-              value ? "bg-indigo-500" : "bg-neutral-700"
+              value ? "bg-violet-500" : "bg-neutral-800 border border-neutral-700"
             }`}
           >
             <span

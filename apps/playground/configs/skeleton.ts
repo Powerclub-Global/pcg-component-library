@@ -5,6 +5,7 @@ export const skeletonConfig: ComponentConfig = {
   slug: "skeleton",
   description: "Animated placeholder for loading states",
   category: "ui",
+  sourcePath: "packages/pcg-ui/components/ui/skeleton.tsx",
   controls: [
     {
       name: "className",

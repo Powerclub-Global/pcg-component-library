@@ -5,6 +5,7 @@ export const faqConfig: ComponentConfig = {
   slug: "faq",
   description: "Accordion FAQ section with category filtering",
   category: "block",
+  sourcePath: "packages/pcg-ui/components/blocks/faq-section.tsx",
   controls: [
     { name: "heading", type: "text", label: "Heading", defaultValue: "Frequently Asked Questions", group: "Content" },
     { name: "description", type: "text", label: "Description", defaultValue: "Everything you need to know about our platform.", group: "Content" },

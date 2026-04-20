@@ -5,6 +5,7 @@ export const buttonConfig: ComponentConfig = {
   slug: "button",
   description: "Versatile button with CVA variants and Radix Slot support",
   category: "ui",
+  sourcePath: "packages/pcg-ui/components/ui/button.tsx",
   controls: [
     {
       name: "variant",

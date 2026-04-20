@@ -5,6 +5,7 @@ export const statsConfig: ComponentConfig = {
   slug: "stats",
   description: "Animated statistics display with counters",
   category: "block",
+  sourcePath: "packages/pcg-ui/components/blocks/stats-section.tsx",
   controls: [
     { name: "heading", type: "text", label: "Heading", defaultValue: "By the Numbers", group: "Content" },
     { name: "description", type: "text", label: "Description", defaultValue: "Our impact across the ecosystem.", group: "Content" },
