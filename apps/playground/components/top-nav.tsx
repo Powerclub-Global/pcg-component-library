@@ -6,7 +6,7 @@ export function TopNav() {
       <div className="flex h-14 items-center justify-between px-6">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-white">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-500 text-xs">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-white text-black text-xs">
               ◈
             </span>
             <span>PCG UI</span>

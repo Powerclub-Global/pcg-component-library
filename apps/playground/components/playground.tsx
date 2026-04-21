@@ -185,7 +185,7 @@ export function Playground({
               {config.controls.map((c) => (
                 <tr key={c.name}>
                   <td className="px-4 py-3">
-                    <code className="rounded-md border border-neutral-800 px-2 py-0.5 text-[13px] text-violet-300">
+                    <code className="rounded-md border border-neutral-800 px-2 py-0.5 text-[13px] text-neutral-200">
                       {c.name}
                     </code>
                   </td>
@@ -260,11 +260,11 @@ function TintedLine({ text }: { text: string }) {
   while ((m = regex.exec(text)) !== null) {
     if (m.index > last) parts.push(text.slice(last, m.index));
     const [, str, expr, kw, tag, attr] = m;
-    if (str) parts.push(<span key={key++} className="text-emerald-300">{str}</span>);
-    else if (expr) parts.push(<span key={key++} className="text-amber-200">{expr}</span>);
-    else if (kw) parts.push(<span key={key++} className="text-violet-300">{kw}</span>);
-    else if (tag) parts.push(<span key={key++} className="text-pink-300">{tag}</span>);
-    else if (attr) parts.push(<span key={key++} className="text-sky-300">{attr}</span>);
+    if (str) parts.push(<span key={key++} className="text-neutral-400">{str}</span>);
+    else if (expr) parts.push(<span key={key++} className="text-neutral-500">{expr}</span>);
+    else if (kw) parts.push(<span key={key++} className="text-white font-semibold">{kw}</span>);
+    else if (tag) parts.push(<span key={key++} className="text-white">{tag}</span>);
+    else if (attr) parts.push(<span key={key++} className="text-neutral-300">{attr}</span>);
     last = regex.lastIndex;
   }
   if (last < text.length) parts.push(text.slice(last));

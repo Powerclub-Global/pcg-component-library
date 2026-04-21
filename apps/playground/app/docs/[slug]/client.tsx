@@ -154,7 +154,7 @@ function VariantManagerWrapper(props: Record<string, unknown>) {
 function JsonLdPlaceholder(props: Record<string, unknown>) {
   return (
     <div className="text-sm text-neutral-400 font-mono max-w-xl">
-      <div className="mb-3">JsonLd emits a <code className="text-violet-300">&lt;script type=&quot;application/ld+json&quot;&gt;</code> into the DOM — nothing visible.</div>
+      <div className="mb-3">JsonLd emits a <code className="text-white">&lt;script type=&quot;application/ld+json&quot;&gt;</code> into the DOM — nothing visible.</div>
       <pre className="rounded-lg border border-neutral-800 p-4 text-xs overflow-auto">
         {JSON.stringify(props.data, null, 2)}
       </pre>
@@ -180,7 +180,7 @@ export function PlaygroundClient({
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <p className="text-neutral-400">
-          Component <code className="text-red-400">{config.slug}</code> not mapped in client.tsx
+          Component <code className="text-white">{config.slug}</code> not mapped in client.tsx
         </p>
       </div>
     );

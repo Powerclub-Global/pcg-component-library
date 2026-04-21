@@ -7,15 +7,15 @@ export default function InstallationPage() {
     <div className="px-10 py-14 max-w-3xl">
       <h1 className="text-5xl font-bold tracking-tight">Installation</h1>
       <p className="mt-4 text-lg text-neutral-400">
-        Wire <span className="text-violet-400">@pcg/ui</span> and{" "}
-        <span className="text-violet-400">@pcg/tokens</span> into any Next.js 15+ / Tailwind v4
+        Wire <span className="text-white">@pcg/ui</span> and{" "}
+        <span className="text-white">@pcg/tokens</span> into any Next.js 15+ / Tailwind v4
         repo. ~5 minutes.
       </p>
 
       <Step n={1} title="Add the packages">
         <p className="mb-3 text-neutral-400">
-          Reference the workspace packages via <code className="text-violet-300">file:</code> in{" "}
-          <code className="text-violet-300">package.json</code>:
+          Reference the workspace packages via <code className="text-white">file:</code> in{" "}
+          <code className="text-white">package.json</code>:
         </p>
         <Code>{`{
   "dependencies": {
@@ -29,7 +29,7 @@ export default function InstallationPage() {
 
       <Step n={2} title="Enable transpilePackages in Next.js">
         <p className="mb-3 text-neutral-400">
-          In <code className="text-violet-300">next.config.ts</code>, transpile the monorepo
+          In <code className="text-white">next.config.ts</code>, transpile the monorepo
           packages:
         </p>
         <Code>{`import type { NextConfig } from "next";
@@ -51,14 +51,14 @@ export default nextConfig;`}</Code>
 
       <Step n={4} title="Pick a brand theme">
         <p className="mb-3 text-neutral-400">
-          19 themes ship in <code className="text-violet-300">@pcg/tokens/css/themes</code>. Import
+          19 themes ship in <code className="text-white">@pcg/tokens/css/themes</code>. Import
           the one for this repo:
         </p>
         <Code>{`@import "@pcg/tokens/css/themes/true-lux.css";`}</Code>
         <p className="mt-3 text-neutral-400">
-          Themes override <code className="text-violet-300">--color-primary</code>,{" "}
-          <code className="text-violet-300">--color-accent</code>,{" "}
-          <code className="text-violet-300">--font-display</code>, and radii. Or roll your own by
+          Themes override <code className="text-white">--color-primary</code>,{" "}
+          <code className="text-white">--color-accent</code>,{" "}
+          <code className="text-white">--font-display</code>, and radii. Or roll your own by
           setting the custom properties inline.
         </p>
       </Step>
@@ -94,28 +94,28 @@ export default function Page() {
             <tbody className="divide-y divide-neutral-800/60">
               <tr>
                 <td className="px-4 py-3 text-neutral-300">
-                  <code className="text-violet-300">Cannot find module &quot;@pcg/ui&quot;</code>
+                  <code className="text-white">Cannot find module &quot;@pcg/ui&quot;</code>
                 </td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Run <code className="text-violet-300">pnpm install</code> — the{" "}
-                  <code className="text-violet-300">file:</code> link needs to resolve.
+                  Run <code className="text-white">pnpm install</code> — the{" "}
+                  <code className="text-white">file:</code> link needs to resolve.
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Classes missing at runtime</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Add the <code className="text-violet-300">@source</code> directive to your
+                  Add the <code className="text-white">@source</code> directive to your
                   globals.css. Tailwind v4 doesn&apos;t scan node_modules by default.
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-neutral-300">
-                  <code className="text-violet-300">workspace:*</code> error on install
+                  <code className="text-white">workspace:*</code> error on install
                 </td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Add a <code className="text-violet-300">pnpm.overrides</code> entry mapping{" "}
-                  <code className="text-violet-300">@pcg/tokens</code> to the same{" "}
-                  <code className="text-violet-300">file:</code> path.
+                  Add a <code className="text-white">pnpm.overrides</code> entry mapping{" "}
+                  <code className="text-white">@pcg/tokens</code> to the same{" "}
+                  <code className="text-white">file:</code> path.
                 </td>
               </tr>
               <tr>
@@ -144,7 +144,7 @@ function Step({
   return (
     <section className="mt-12">
       <div className="flex items-center gap-3 mb-4">
-        <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-violet-500/40 text-violet-400 text-sm font-bold">
+        <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-neutral-700 text-white text-sm font-bold">
           {n}
         </span>
         <h2 className="text-2xl font-bold">{title}</h2>

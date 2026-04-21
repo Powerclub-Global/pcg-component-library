@@ -15,7 +15,7 @@ export default function IntroductionPage() {
     <div className="px-10 py-14 max-w-3xl">
       <h1 className="text-5xl font-bold tracking-tight">Introduction</h1>
       <p className="mt-4 text-lg text-neutral-400">
-        <span className="text-violet-400">@pcg/ui</span> is the shared component library for the
+        <span className="text-white">@pcg/ui</span> is the shared component library for the
         PowerClub Global ecosystem — a single source of UI primitives, layout pieces, and landing
         blocks that drops into any @pcg repo.
       </p>
@@ -27,25 +27,25 @@ export default function IntroductionPage() {
         </p>
         <ul className="mt-4 grid grid-cols-2 gap-3 text-sm">
           <li className="rounded-xl border border-neutral-800 px-4 py-3">
-            <div className="text-violet-400 font-semibold">{counts.ui ?? 0} UI Primitives</div>
+            <div className="text-white font-semibold">{counts.ui ?? 0} UI Primitives</div>
             <div className="text-neutral-500 text-xs mt-1">
               Buttons, inputs, skeletons, pagination — the building blocks.
             </div>
           </li>
           <li className="rounded-xl border border-neutral-800 px-4 py-3">
-            <div className="text-violet-400 font-semibold">{counts.layout ?? 0} Layout</div>
+            <div className="text-white font-semibold">{counts.layout ?? 0} Layout</div>
             <div className="text-neutral-500 text-xs mt-1">
               Navbar, footer, container — page structure.
             </div>
           </li>
           <li className="rounded-xl border border-neutral-800 px-4 py-3">
-            <div className="text-violet-400 font-semibold">{counts.block ?? 0} Blocks</div>
+            <div className="text-white font-semibold">{counts.block ?? 0} Blocks</div>
             <div className="text-neutral-500 text-xs mt-1">
               Hero, CTA, pricing, testimonials — full-width sections.
             </div>
           </li>
           <li className="rounded-xl border border-neutral-800 px-4 py-3">
-            <div className="text-violet-400 font-semibold">{counts.commerce ?? 0} Commerce</div>
+            <div className="text-white font-semibold">{counts.commerce ?? 0} Commerce</div>
             <div className="text-neutral-500 text-xs mt-1">
               Variant managers and product tooling.
             </div>
@@ -58,13 +58,13 @@ export default function IntroductionPage() {
         <ul className="space-y-3 text-neutral-400">
           <li>
             <span className="text-white font-semibold">One library, 19 themes.</span> All components
-            consume CSS custom properties (<code className="text-violet-300">--color-accent</code>,{" "}
-            <code className="text-violet-300">--font-display</code>, etc.). Switch brands by
+            consume CSS custom properties (<code className="text-white">--color-accent</code>,{" "}
+            <code className="text-white">--font-display</code>, etc.). Switch brands by
             swapping a theme file, not by forking components.
           </li>
           <li>
             <span className="text-white font-semibold">Server-component first.</span> Only the
-            components that need interaction carry <code className="text-violet-300">&quot;use
+            components that need interaction carry <code className="text-white">&quot;use
             client&quot;</code>. Ship less JS.
           </li>
           <li>
@@ -92,33 +92,33 @@ export default function IntroductionPage() {
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Imports</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  <code className="text-violet-300">import &#123; Button &#125; from &quot;@pcg/ui&quot;;</code>
+                  <code className="text-white">import &#123; Button &#125; from &quot;@pcg/ui&quot;;</code>
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Variants</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  CVA with <code className="text-violet-300">variant</code> and{" "}
-                  <code className="text-violet-300">size</code> props
+                  CVA with <code className="text-white">variant</code> and{" "}
+                  <code className="text-white">size</code> props
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Styling override</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Pass <code className="text-violet-300">className</code>; merged via{" "}
-                  <code className="text-violet-300">cn()</code> (tailwind-merge)
+                  Pass <code className="text-white">className</code>; merged via{" "}
+                  <code className="text-white">cn()</code> (tailwind-merge)
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Theming</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Import one of 19 brand themes from <code className="text-violet-300">@pcg/tokens/css/themes</code>
+                  Import one of 19 brand themes from <code className="text-white">@pcg/tokens/css/themes</code>
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Types</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Every component exports <code className="text-violet-300">&lt;Name&gt;Props</code>
+                  Every component exports <code className="text-white">&lt;Name&gt;Props</code>
                 </td>
               </tr>
             </tbody>
@@ -131,13 +131,13 @@ export default function IntroductionPage() {
         <div className="flex flex-wrap gap-3">
           <Link
             href="/docs/installation"
-            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-[0_0_30px_rgba(168,85,247,0.4)]"
+            className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-neutral-200"
           >
             Installation →
           </Link>
           <Link
             href="/docs/button"
-            className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 px-5 py-2.5 text-sm font-semibold text-neutral-300 hover:border-neutral-700 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 px-5 py-2.5 text-sm font-semibold text-neutral-300 hover:border-neutral-600 hover:text-white transition-colors"
           >
             Browse components
           </Link>

@@ -74,16 +74,21 @@
   background: #0a0a0f;
 }
 
-/* Shiki — transparent bg, own padding, counter-based line numbers */
+/* Shiki — transparent bg, monochrome, counter-based line numbers */
 .shiki-wrap pre.shiki {
   background: transparent !important;
   padding: 1rem 1.25rem;
   counter-reset: line;
   font-size: 0.875rem;
   line-height: 1.65;
+  color: #e5e5e5 !important;
 }
 .shiki-wrap pre.shiki code {
   display: block;
+}
+.shiki-wrap pre.shiki span {
+  /* Force monochrome: override all shiki token colors */
+  color: inherit !important;
 }
 .shiki-wrap pre.shiki .line {
   display: grid;

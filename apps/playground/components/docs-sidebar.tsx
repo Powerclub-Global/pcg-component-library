@@ -39,13 +39,13 @@ export function DocsSidebar() {
             return (
               <li key={item.href} className="relative">
                 {active && (
-                  <span className="absolute left-0 top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-violet-500" />
+                  <span className="absolute left-0 top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-white" />
                 )}
                 <Link
                   href={item.href}
                   className={`block rounded-md px-3 py-1.5 text-sm transition-colors ${
                     active
-                      ? "text-violet-400"
+                      ? "text-white"
                       : "text-neutral-400 hover:bg-white/[0.03] hover:text-white"
                   }`}
                 >
@@ -73,13 +73,13 @@ export function DocsSidebar() {
                   return (
                     <li key={item.slug} className="relative">
                       {active && (
-                        <span className="absolute left-0 top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-violet-500" />
+                        <span className="absolute left-0 top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-white" />
                       )}
                       <Link
                         href={href}
                         className={`block rounded-md px-3 py-1.5 text-sm transition-colors ${
                           active
-                            ? "text-violet-400"
+                            ? "text-white"
                             : "text-neutral-400 hover:bg-white/[0.03] hover:text-white"
                         }`}
                       >
