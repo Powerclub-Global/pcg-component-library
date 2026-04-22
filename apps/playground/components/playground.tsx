@@ -44,7 +44,7 @@ export function Playground({
   }, [values, config.staticProps]);
 
   const usageCode = generateJSX(config.name, componentProps, defaults, children || undefined);
-  const importLine = `import { ${config.name} } from "@pcg/ui";`;
+  const importLine = `import { ${config.name} } from "@powerclub-global/ui";`;
   const isFullWidth = config.category === "block" || config.category === "layout";
 
   function copy(key: string, text: string) {

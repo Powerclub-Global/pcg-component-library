@@ -15,7 +15,7 @@ export default function IntroductionPage() {
     <div className="px-10 py-14 max-w-3xl">
       <h1 className="text-5xl font-bold tracking-tight">Introduction</h1>
       <p className="mt-4 text-lg text-neutral-400">
-        <span className="text-white">@pcg/ui</span> is the shared component library for the
+        <span className="text-white">@powerclub-global/ui</span> is the shared component library for the
         PowerClub Global ecosystem — a single source of UI primitives, layout pieces, and landing
         blocks that drops into any @pcg repo.
       </p>
@@ -92,7 +92,7 @@ export default function IntroductionPage() {
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Imports</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  <code className="text-white">import &#123; Button &#125; from &quot;@pcg/ui&quot;;</code>
+                  <code className="text-white">import &#123; Button &#125; from &quot;@powerclub-global/ui&quot;;</code>
                 </td>
               </tr>
               <tr>
@@ -112,7 +112,7 @@ export default function IntroductionPage() {
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Theming</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Import one of 19 brand themes from <code className="text-white">@pcg/tokens/css/themes</code>
+                  Import one of 19 brand themes from <code className="text-white">@powerclub-global/tokens/css/themes</code>
                 </td>
               </tr>
               <tr>

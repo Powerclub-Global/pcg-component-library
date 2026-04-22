@@ -15,9 +15,9 @@ export const faqConfig: ComponentConfig = {
   staticProps: {
     items: [
       { question: "What is PCG Design System?", answer: "A unified component library for the PowerClub Global ecosystem, providing reusable UI primitives, layout components, and page blocks.", category: "General" },
-      { question: "How do I install it?", answer: "Add @pcg/ui and @pcg/tokens as dependencies in your project. Import components directly from @pcg/ui.", category: "Setup" },
+      { question: "How do I install it?", answer: "Add @powerclub-global/ui and @powerclub-global/tokens as dependencies in your project. Import components directly from @powerclub-global/ui.", category: "Setup" },
       { question: "Does it support dark mode?", answer: "Yes. All components use CSS custom properties which automatically adapt to dark mode via the .dark class or prefers-color-scheme.", category: "General" },
-      { question: "Can I customize the theme?", answer: "Import one of the 19 brand theme CSS files from @pcg/tokens, or create your own by overriding the CSS custom properties.", category: "Setup" },
+      { question: "Can I customize the theme?", answer: "Import one of the 19 brand theme CSS files from @powerclub-global/tokens, or create your own by overriding the CSS custom properties.", category: "Setup" },
       { question: "Is it compatible with Next.js?", answer: "Fully compatible with Next.js App Router. Components use 'use client' directive where needed.", category: "Setup" },
     ],
   },

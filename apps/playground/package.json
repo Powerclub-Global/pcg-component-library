@@ -9,8 +9,8 @@
     "clean": "rm -rf .next .turbo"
   },
   "dependencies": {
-    "@pcg/tokens": "workspace:*",
-    "@pcg/ui": "workspace:*",
+    "@powerclub-global/tokens": "workspace:*",
+    "@powerclub-global/ui": "workspace:*",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",

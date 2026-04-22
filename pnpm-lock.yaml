@@ -17,10 +17,10 @@ importers:
 
   apps/playground:
     dependencies:
-      '@pcg/tokens':
+      '@powerclub-global/tokens':
         specifier: workspace:*
         version: link:../../packages/pcg-tokens
-      '@pcg/ui':
+      '@powerclub-global/ui':
         specifier: workspace:*
         version: link:../../packages/pcg-ui
       '@radix-ui/react-slot':
@@ -81,7 +81,7 @@ importers:
 
   packages/pcg-ui:
     dependencies:
-      '@pcg/tokens':
+      '@powerclub-global/tokens':
         specifier: workspace:*
         version: link:../pcg-tokens
       '@radix-ui/react-slot':

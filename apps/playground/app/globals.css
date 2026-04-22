@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@pcg/tokens/css/base.css";
+@import "@powerclub-global/tokens/css/base.css";
 
 /* Playground shell — always dark */
 :root {

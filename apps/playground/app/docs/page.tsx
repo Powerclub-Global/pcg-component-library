@@ -7,7 +7,7 @@ export default function DocsIndex() {
     <div className="px-10 py-14">
       <h1 className="text-4xl font-bold tracking-tight">Docs</h1>
       <p className="mt-3 max-w-2xl text-neutral-400">
-        Interactive component explorer for <span className="text-white">@pcg/ui</span>. Pick a
+        Interactive component explorer for <span className="text-white">@powerclub-global/ui</span>. Pick a
         component from the sidebar, tweak props, copy the JSX.
       </p>
       <div className="mt-6 flex items-center gap-3 text-sm text-neutral-500">

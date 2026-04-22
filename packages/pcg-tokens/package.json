@@ -1,9 +1,18 @@
 {
-  "name": "@pcg/tokens",
+  "name": "@powerclub-global/tokens",
   "version": "1.0.0",
   "description": "Unified design tokens for PowerClub Global ecosystem",
   "main": "index.ts",
   "types": "types.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Powerclub-Global/pcg-component-library.git",
+    "directory": "packages/pcg-tokens"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "exports": {
     ".": "./index.ts",
     "./css/*": "./css/*",

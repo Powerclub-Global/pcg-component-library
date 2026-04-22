@@ -58,7 +58,7 @@ export default function HomePage() {
                 <span className="text-white font-semibold">HeroSection</span>
                 <span className="text-white">{" }"}</span>{" "}
                 <span className="text-neutral-500">from</span>{" "}
-                <span className="text-neutral-400">&apos;@pcg/ui&apos;</span>
+                <span className="text-neutral-400">&apos;@powerclub-global/ui&apos;</span>
                 <span className="text-neutral-500">;</span>
                 {"\n\n"}
                 <span className="text-neutral-500">function</span>{" "}
@@ -154,7 +154,7 @@ export default function HomePage() {
 
             <FeatureCard
               title="Themeable"
-              description="All components consume CSS custom properties. 19 brand themes ship in @pcg/tokens — swap by importing a theme file."
+              description="All components consume CSS custom properties. 19 brand themes ship in @powerclub-global/tokens — swap by importing a theme file."
             >
               <div className="space-y-2">
                 {[
@@ -169,7 +169,7 @@ export default function HomePage() {
                   >
                     <span className={`h-2 w-2 rounded-full ${t.dot}`} />
                     <span className="text-neutral-300">{t.name}</span>
-                    <span className="ml-auto text-neutral-600 font-mono">@pcg/tokens</span>
+                    <span className="ml-auto text-neutral-600 font-mono">@powerclub-global/tokens</span>
                   </div>
                 ))}
               </div>
@@ -181,10 +181,10 @@ export default function HomePage() {
             >
               <pre className="text-[11px] font-mono text-neutral-500 leading-relaxed overflow-hidden">
                 {`// prompt claude
-"use Button from @pcg/ui
+"use Button from @powerclub-global/ui
  variant=default size=lg"
 
-import { Button } from "@pcg/ui";
+import { Button } from "@powerclub-global/ui";
 
 <Button variant="default" size="lg">
   Ship it →
@@ -312,7 +312,7 @@ import { Button } from "@pcg/ui";
             <pre className="px-4 py-5 text-sm font-mono overflow-x-auto">
               <code className="text-neutral-200">
                 <span className="text-neutral-600">~</span>{" "}
-                pnpm add @pcg/ui @pcg/tokens
+                pnpm add @powerclub-global/ui @powerclub-global/tokens
               </code>
             </pre>
           </div>

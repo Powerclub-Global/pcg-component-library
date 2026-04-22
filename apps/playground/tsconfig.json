@@ -26,10 +26,10 @@
       "@/*": [
         "./*"
       ],
-      "@pcg/ui": [
+      "@powerclub-global/ui": [
         "../../packages/pcg-ui/index.ts"
       ],
-      "@pcg/tokens/*": [
+      "@powerclub-global/tokens/*": [
         "../../packages/pcg-tokens/*"
       ]
     }

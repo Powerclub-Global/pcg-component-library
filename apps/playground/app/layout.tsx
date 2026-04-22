@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "PCG Playground",
-  description: "Interactive component playground for @pcg/ui",
+  description: "Interactive component playground for @powerclub-global/ui",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

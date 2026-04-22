@@ -34,7 +34,7 @@ import {
   Testimonials,
   TrustBadges,
   VariantManager,
-} from "@pcg/ui";
+} from "@powerclub-global/ui";
 
 const componentMap: Record<string, React.ComponentType<Record<string, unknown>>> = {
   button: Button as unknown as React.ComponentType<Record<string, unknown>>,

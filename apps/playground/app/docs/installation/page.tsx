@@ -7,54 +7,68 @@ export default function InstallationPage() {
     <div className="px-10 py-14 max-w-3xl">
       <h1 className="text-5xl font-bold tracking-tight">Installation</h1>
       <p className="mt-4 text-lg text-neutral-400">
-        Wire <span className="text-white">@pcg/ui</span> and{" "}
-        <span className="text-white">@pcg/tokens</span> into any Next.js 15+ / Tailwind v4
-        repo. ~5 minutes.
+        Wire <span className="text-white">@powerclub-global/ui</span> and{" "}
+        <span className="text-white">@powerclub-global/tokens</span> into any Next.js 15+ /
+        Tailwind v4 repo. ~5 minutes.
       </p>
 
-      <Step n={1} title="Add the packages">
+      <div className="mt-8 rounded-xl border border-neutral-800 p-4 text-sm text-neutral-400">
+        Published privately to GitHub Packages under the{" "}
+        <code className="text-white">@powerclub-global</code> scope. Consumers need a GitHub PAT
+        with the <code className="text-white">read:packages</code> permission.
+      </div>
+
+      <Step n={1} title="Configure .npmrc for the scope">
         <p className="mb-3 text-neutral-400">
-          Reference the workspace packages via <code className="text-white">file:</code> in{" "}
-          <code className="text-white">package.json</code>:
+          In the consumer repo root, add a <code className="text-white">.npmrc</code> telling pnpm
+          where to find the scope:
         </p>
-        <Code>{`{
-  "dependencies": {
-    "@pcg/tokens": "file:../../pcg-design-system/packages/pcg-tokens",
-    "@pcg/ui": "file:../../pcg-design-system/packages/pcg-ui"
-  }
-}`}</Code>
-        <p className="mt-4 text-neutral-400">Peer deps the library expects:</p>
+        <Code>{`@powerclub-global:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}
+always-auth=true`}</Code>
+        <p className="mt-3 text-neutral-400">
+          Commit this file. Locally, export{" "}
+          <code className="text-white">GITHUB_TOKEN</code> in your shell. In CI/Vercel, set it as
+          an env var — the PAT needs <code className="text-white">read:packages</code>.
+        </p>
+      </Step>
+
+      <Step n={2} title="Install the packages">
+        <Code>{`pnpm add @powerclub-global/ui @powerclub-global/tokens`}</Code>
+        <p className="mt-3 text-neutral-400">
+          Peer deps the library expects (install if not already present):
+        </p>
         <Code>{`pnpm add @radix-ui/react-slot class-variance-authority clsx tailwind-merge`}</Code>
       </Step>
 
-      <Step n={2} title="Enable transpilePackages in Next.js">
+      <Step n={3} title="Enable transpilePackages in Next.js">
         <p className="mb-3 text-neutral-400">
-          In <code className="text-white">next.config.ts</code>, transpile the monorepo
-          packages:
+          In <code className="text-white">next.config.ts</code>:
         </p>
         <Code>{`import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@pcg/ui", "@pcg/tokens"],
+  transpilePackages: ["@powerclub-global/ui", "@powerclub-global/tokens"],
 };
 
 export default nextConfig;`}</Code>
       </Step>
 
-      <Step n={3} title="Import the base tokens in globals.css">
+      <Step n={4} title="Wire tokens in globals.css">
         <Code>{`@import "tailwindcss";
-@import "@pcg/tokens/css/base.css";
+@import "@powerclub-global/tokens/css/base.css";
 
-/* Scan shared component classes */
-@source "../../node_modules/@pcg/ui";`}</Code>
+/* Tailwind v4 doesn't scan node_modules by default */
+@source "../../node_modules/@powerclub-global/ui";`}</Code>
       </Step>
 
-      <Step n={4} title="Pick a brand theme">
+      <Step n={5} title="Pick a brand theme">
         <p className="mb-3 text-neutral-400">
-          19 themes ship in <code className="text-white">@pcg/tokens/css/themes</code>. Import
-          the one for this repo:
+          19 themes ship in{" "}
+          <code className="text-white">@powerclub-global/tokens/css/themes</code>. Import the one
+          for this repo:
         </p>
-        <Code>{`@import "@pcg/tokens/css/themes/true-lux.css";`}</Code>
+        <Code>{`@import "@powerclub-global/tokens/css/themes/true-lux.css";`}</Code>
         <p className="mt-3 text-neutral-400">
           Themes override <code className="text-white">--color-primary</code>,{" "}
           <code className="text-white">--color-accent</code>,{" "}
@@ -63,8 +77,8 @@ export default nextConfig;`}</Code>
         </p>
       </Step>
 
-      <Step n={5} title="Use it">
-        <Code>{`import { Button, HeroSection, FAQSection } from "@pcg/ui";
+      <Step n={6} title="Use it">
+        <Code>{`import { Button, HeroSection, FAQSection } from "@powerclub-global/ui";
 
 export default function Page() {
   return (
@@ -81,7 +95,30 @@ export default function Page() {
 }`}</Code>
       </Step>
 
-      <section className="mt-14">
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold mb-3">Local development (alternative)</h2>
+        <p className="text-neutral-400 mb-4">
+          For active library development, skip the registry and reference the source directly via{" "}
+          <code className="text-white">file:</code>:
+        </p>
+        <Code>{`{
+  "dependencies": {
+    "@powerclub-global/tokens": "file:../../pcg-component-library/packages/pcg-tokens",
+    "@powerclub-global/ui": "file:../../pcg-component-library/packages/pcg-ui"
+  },
+  "pnpm": {
+    "overrides": {
+      "@powerclub-global/tokens": "file:../../pcg-component-library/packages/pcg-tokens"
+    }
+  }
+}`}</Code>
+        <p className="mt-3 text-neutral-400 text-sm">
+          Requires the <code className="text-white">pcg-component-library</code> repo to sit next
+          to the consumer repo on disk. Not suitable for CI/deploy.
+        </p>
+      </section>
+
+      <section className="mt-16">
         <h2 className="text-2xl font-bold mb-3">Troubleshooting</h2>
         <div className="rounded-xl border border-neutral-800 overflow-hidden">
           <table className="w-full text-sm">
@@ -94,28 +131,29 @@ export default function Page() {
             <tbody className="divide-y divide-neutral-800/60">
               <tr>
                 <td className="px-4 py-3 text-neutral-300">
-                  <code className="text-white">Cannot find module &quot;@pcg/ui&quot;</code>
+                  <code className="text-white">401 Unauthorized</code> on install
                 </td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Run <code className="text-white">pnpm install</code> — the{" "}
-                  <code className="text-white">file:</code> link needs to resolve.
+                  <code className="text-white">GITHUB_TOKEN</code> missing or lacks{" "}
+                  <code className="text-white">read:packages</code>. Regenerate PAT, export in
+                  shell, retry.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 text-neutral-300">
+                  <code className="text-white">404 Not Found</code> on install
+                </td>
+                <td className="px-4 py-3 text-neutral-400">
+                  Package not published yet. Check Actions tab — wait for the next tagged
+                  release, or run the <code className="text-white">Publish</code> workflow
+                  manually.
                 </td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-neutral-300">Classes missing at runtime</td>
                 <td className="px-4 py-3 text-neutral-400">
-                  Add the <code className="text-white">@source</code> directive to your
-                  globals.css. Tailwind v4 doesn&apos;t scan node_modules by default.
-                </td>
-              </tr>
-              <tr>
-                <td className="px-4 py-3 text-neutral-300">
-                  <code className="text-white">workspace:*</code> error on install
-                </td>
-                <td className="px-4 py-3 text-neutral-400">
-                  Add a <code className="text-white">pnpm.overrides</code> entry mapping{" "}
-                  <code className="text-white">@pcg/tokens</code> to the same{" "}
-                  <code className="text-white">file:</code> path.
+                  Add the <code className="text-white">@source</code> directive. Tailwind v4
+                  doesn&apos;t scan node_modules.
                 </td>
               </tr>
               <tr>

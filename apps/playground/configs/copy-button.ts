@@ -7,7 +7,7 @@ export const copyButtonConfig: ComponentConfig = {
   category: "ui",
   sourcePath: "packages/pcg-ui/components/ui/copy-button.tsx",
   controls: [
-    { name: "text", type: "text", label: "Text to Copy", defaultValue: "npm install @pcg/ui" },
+    { name: "text", type: "text", label: "Text to Copy", defaultValue: "npm install @powerclub-global/ui" },
     { name: "label", type: "text", label: "Button Label", defaultValue: "Copy" },
     { name: "copiedLabel", type: "text", label: "Copied Label", defaultValue: "Copied!" },
     { name: "copiedDuration", type: "number", label: "Copied Duration (ms)", defaultValue: 2000 },
