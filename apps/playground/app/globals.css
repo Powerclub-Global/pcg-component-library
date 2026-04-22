@@ -77,7 +77,7 @@
 /* Shiki — transparent bg, monochrome, counter-based line numbers */
 .shiki-wrap pre.shiki {
   background: transparent !important;
-  padding: 1rem 1.25rem;
+  padding: 1rem 1.25rem 1rem 0;
   counter-reset: line;
   font-size: 0.875rem;
   line-height: 1.65;
@@ -85,21 +85,25 @@
 }
 .shiki-wrap pre.shiki code {
   display: block;
+  counter-reset: line;
 }
 .shiki-wrap pre.shiki span {
-  /* Force monochrome: override all shiki token colors */
+  /* Force monochrome: override all shiki token colors, keep inline flow */
   color: inherit !important;
 }
 .shiki-wrap pre.shiki .line {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 0;
+  display: block;
+  position: relative;
+  padding-left: 3.75rem;
+  min-height: 1.65em;
 }
 .shiki-wrap pre.shiki .line::before {
   counter-increment: line;
   content: counter(line);
-  color: #525252;
+  position: absolute;
+  left: 0;
+  width: 2.75rem;
   text-align: right;
-  padding-right: 1rem;
+  color: #525252;
   user-select: none;
 }
