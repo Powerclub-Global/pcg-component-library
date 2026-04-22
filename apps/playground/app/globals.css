@@ -80,21 +80,18 @@
   padding: 1rem 1.25rem 1rem 0;
   counter-reset: line;
   font-size: 0.875rem;
-  line-height: 1.45;
-  color: #e5e5e5 !important;
+  line-height: 1;
 }
 .shiki-wrap pre.shiki code {
   display: block;
   counter-reset: line;
 }
-.shiki-wrap pre.shiki span {
-  /* Force monochrome: override all shiki token colors, keep inline flow */
-  color: inherit !important;
-}
 .shiki-wrap pre.shiki .line {
   display: block;
   position: relative;
   padding-left: 3.75rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
 }
 .shiki-wrap pre.shiki .line:empty::after {
   content: "\00a0";
