@@ -18,6 +18,15 @@ const getStartedLinks = [
   { name: "Installation", href: "/docs/installation" },
 ];
 
+const guideLinks = [
+  { name: "Project Setup", href: "/docs/guides/project-setup" },
+  { name: "File Structure", href: "/docs/guides/file-structure" },
+  { name: "Theming & Tokens", href: "/docs/guides/theming" },
+  { name: "SEO", href: "/docs/guides/seo" },
+  { name: "Performance", href: "/docs/guides/performance" },
+  { name: "Deployment", href: "/docs/guides/deployment" },
+];
+
 export function DocsSidebar() {
   const pathname = usePathname();
 
@@ -35,6 +44,34 @@ export function DocsSidebar() {
         </h3>
         <ul className="space-y-0.5">
           {getStartedLinks.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <li key={item.href} className="relative">
+                {active && (
+                  <span className="absolute left-0 top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-white" />
+                )}
+                <Link
+                  href={item.href}
+                  className={`block rounded-md px-3 py-1.5 text-sm transition-colors ${
+                    active
+                      ? "text-white"
+                      : "text-neutral-400 hover:bg-white/[0.03] hover:text-white"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div className="mb-6">
+        <h3 className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-wider text-neutral-500">
+          Best Practices
+        </h3>
+        <ul className="space-y-0.5">
+          {guideLinks.map((item) => {
             const active = pathname === item.href;
             return (
               <li key={item.href} className="relative">

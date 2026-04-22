@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "@pcg/tokens/css/base.css";
+
+/*
+  ─────────────────────────────────────────────────────────
+  STEP 1: Pick a brand theme.
+  Uncomment exactly one of the lines below (or create a new
+  theme in packages/pcg-tokens/css/themes/ and import it).
+  ─────────────────────────────────────────────────────────
+*/
+/* @import "@pcg/tokens/css/themes/powerclub-global.css"; */
+/* @import "@pcg/tokens/css/themes/okb.css"; */
+/* @import "@pcg/tokens/css/themes/okb-ventures.css"; */
+/* @import "@pcg/tokens/css/themes/true-lux.css"; */
+/* @import "@pcg/tokens/css/themes/youseffs-yachts.css"; */
+/* @import "@pcg/tokens/css/themes/sirak-studios.css"; */
+/* @import "@pcg/tokens/css/themes/willrise.css"; */
+/* @import "@pcg/tokens/css/themes/cable-com.css"; */
+/* @import "@pcg/tokens/css/themes/alchemy-water.css"; */
+/* @import "@pcg/tokens/css/themes/jungleverse.css"; */
+/* @import "@pcg/tokens/css/themes/omega-wireless.css"; */
+
+/*
+  Or roll your own — override just what differs from the defaults:
+
+  :root {
+    --color-primary:   #1a1a2e;
+    --color-accent:    #e94560;
+    --font-display:    'Bebas Neue', sans-serif;
+    --radius:          4px;
+  }
+*/
+
+/* Tailwind must scan @pcg/ui's class names */
+@source "../../node_modules/@pcg/ui";
