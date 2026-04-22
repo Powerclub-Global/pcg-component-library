@@ -98,29 +98,51 @@ export function VariantManager({
   const inputPrice = (price: number) =>
     priceInCents ? (price / 100).toFixed(2) : price.toFixed(2);
 
+  const inputStyle: React.CSSProperties = {
+    background: "rgba(255,255,255,0.04)",
+    border: "1px solid rgba(255,255,255,0.1)",
+    color: "#ffffff",
+  };
+
   return (
-    <div className={`space-y-6 ${className}`}>
+    <div
+      className={`space-y-6 ${className}`}
+      style={{ color: "rgba(255,255,255,0.88)" }}
+    >
       <div className="flex items-center justify-between">
-        <h3 className="text-xl font-bold text-[var(--color-text,#1a1a1a)]">
+        <h3
+          className="font-semibold uppercase tracking-wide text-white"
+          style={{ fontSize: "1.5rem", lineHeight: 0.95 }}
+        >
           Product Variants
         </h3>
         <button
           type="button"
           onClick={addVariant}
-          className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover,var(--color-accent))] text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
+          className="rounded-sm px-4 py-2 text-sm font-semibold uppercase tracking-wider transition-all hover:brightness-110"
+          style={{ background: "#ffffff", color: "#000000" }}
         >
           {addLabel}
         </button>
       </div>
 
       {variants.length === 0 ? (
-        <div className="text-center py-8 border-2 border-dashed border-[var(--color-border,#e5e5e5)] rounded-xl">
-          <div className="font-semibold text-[var(--color-text,#1a1a1a)] mb-2">{emptyTitle}</div>
-          <div className="text-[var(--color-text-muted,#666)] mb-4 text-sm">{emptyDescription}</div>
+        <div
+          className="rounded-xl py-8 text-center"
+          style={{
+            border: "2px dashed rgba(255,255,255,0.1)",
+            background: "rgba(255,255,255,0.04)",
+          }}
+        >
+          <div className="mb-2 font-semibold text-white">{emptyTitle}</div>
+          <div className="mb-4 text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+            {emptyDescription}
+          </div>
           <button
             type="button"
             onClick={addVariant}
-            className="bg-[var(--color-accent)] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+            className="rounded-sm px-6 py-3 font-semibold uppercase tracking-wider transition-all hover:brightness-110"
+            style={{ background: "#ffffff", color: "#000000" }}
           >
             Add First Variant
           </button>
@@ -130,42 +152,45 @@ export function VariantManager({
           {variants.map((variant, index) => (
             <div
               key={variant.id || index}
-              className="p-6 border border-[var(--color-border,#e5e5e5)] rounded-xl"
+              className="rounded-xl p-6 backdrop-blur-xl"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
             >
               {editingIndex === index ? (
                 <div className="space-y-4">
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {/* SKU */}
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                     <div>
-                      <label className="block text-sm font-semibold text-[var(--color-text,#1a1a1a)] mb-1">
-                        SKU *
+                      <label className="mb-1 block text-sm font-semibold text-white">
+                        SKU <span style={{ color: "#ffffff" }}>*</span>
                       </label>
                       <input
                         type="text"
                         value={variant.sku}
                         onChange={(e) => updateVariant(index, "sku", e.target.value)}
-                        className="w-full px-3 py-2 border border-[var(--color-border,#e5e5e5)] rounded-lg focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent outline-none transition-all"
+                        className="w-full rounded-sm px-3 py-2 text-sm outline-none focus:border-white"
+                        style={inputStyle}
                       />
                     </div>
 
-                    {/* Price */}
                     <div>
-                      <label className="block text-sm font-semibold text-[var(--color-text,#1a1a1a)] mb-1">
-                        Price ($) *
+                      <label className="mb-1 block text-sm font-semibold text-white">
+                        Price ($) <span style={{ color: "#ffffff" }}>*</span>
                       </label>
                       <input
                         type="number"
                         step="0.01"
                         value={inputPrice(variant.price)}
                         onChange={(e) => updateVariant(index, "price", parsePrice(e.target.value))}
-                        className="w-full px-3 py-2 border border-[var(--color-border,#e5e5e5)] rounded-lg focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent outline-none transition-all"
+                        className="w-full rounded-sm px-3 py-2 text-sm outline-none focus:border-white"
+                        style={inputStyle}
                       />
                     </div>
 
-                    {/* Dynamic attributes */}
                     {attributes.map((attr) => (
                       <div key={attr.key}>
-                        <label className="block text-sm font-semibold text-[var(--color-text,#1a1a1a)] mb-1">
+                        <label className="mb-1 block text-sm font-semibold text-white">
                           {attr.name}
                         </label>
                         <input
@@ -173,7 +198,8 @@ export function VariantManager({
                           value={variant.attributes[attr.key] || ""}
                           onChange={(e) => updateVariant(index, attr.key, e.target.value)}
                           placeholder={attr.placeholder}
-                          className="w-full px-3 py-2 border border-[var(--color-border,#e5e5e5)] rounded-lg focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent outline-none transition-all"
+                          className="w-full rounded-sm px-3 py-2 text-sm outline-none focus:border-white"
+                          style={inputStyle}
                         />
                       </div>
                     ))}
@@ -183,14 +209,19 @@ export function VariantManager({
                     <button
                       type="button"
                       onClick={() => setEditingIndex(null)}
-                      className="px-4 py-2 border border-[var(--color-border,#e5e5e5)] rounded-lg hover:bg-[var(--color-surface,#f5f5f5)] transition-colors text-sm"
+                      className="rounded-sm px-4 py-2 text-sm transition-colors"
+                      style={{
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        color: "rgba(255,255,255,0.6)",
+                      }}
                     >
                       Cancel
                     </button>
                     <button
                       type="button"
                       onClick={() => saveVariant(index)}
-                      className="px-4 py-2 bg-[var(--color-accent)] text-white rounded-lg transition-colors text-sm font-semibold"
+                      className="rounded-sm px-4 py-2 text-sm font-semibold uppercase tracking-wider transition-all hover:brightness-110"
+                      style={{ background: "#ffffff", color: "#000000" }}
                     >
                       Save
                     </button>
@@ -198,19 +229,27 @@ export function VariantManager({
                 </div>
               ) : (
                 <div className="flex items-center justify-between">
-                  <div className="flex-1 grid md:grid-cols-4 gap-4">
+                  <div className="grid flex-1 gap-4 md:grid-cols-4">
                     <div>
-                      <div className="font-semibold text-[var(--color-text,#1a1a1a)]">{variant.sku}</div>
-                      <div className="text-xs text-[var(--color-text-muted,#666)]">SKU</div>
+                      <div className="font-semibold text-white">{variant.sku}</div>
+                      <div className="text-xs uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.4)" }}>
+                        SKU
+                      </div>
                     </div>
                     <div>
-                      <div className="font-semibold">{displayPrice(variant.price)}</div>
-                      <div className="text-xs text-[var(--color-text-muted,#666)]">Price</div>
+                      <div className="font-semibold" style={{ color: "#ffffff" }}>
+                        {displayPrice(variant.price)}
+                      </div>
+                      <div className="text-xs uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.4)" }}>
+                        Price
+                      </div>
                     </div>
                     {attributes.slice(0, 2).map((attr) => (
                       <div key={attr.key}>
-                        <div className="font-semibold">{variant.attributes[attr.key] || "N/A"}</div>
-                        <div className="text-xs text-[var(--color-text-muted,#666)]">{attr.name}</div>
+                        <div className="font-semibold text-white">{variant.attributes[attr.key] || "N/A"}</div>
+                        <div className="text-xs uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.4)" }}>
+                          {attr.name}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -219,14 +258,16 @@ export function VariantManager({
                     <button
                       type="button"
                       onClick={() => setEditingIndex(index)}
-                      className="text-[var(--color-accent)] hover:underline font-medium text-sm"
+                      className="text-sm font-medium hover:underline"
+                      style={{ color: "#ffffff" }}
                     >
                       Edit
                     </button>
                     <button
                       type="button"
                       onClick={() => removeVariant(index)}
-                      className="text-red-600 hover:underline font-medium text-sm"
+                      className="text-sm font-medium hover:underline"
+                      style={{ color: "rgba(255,255,255,0.4)" }}
                     >
                       Remove
                     </button>

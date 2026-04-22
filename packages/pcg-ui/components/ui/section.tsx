@@ -3,6 +3,7 @@ import { cn } from "../../lib/cn";
 export interface SectionProps {
   id?: string;
   title?: string;
+  highlight?: string;
   subtitle?: string;
   center?: boolean;
   className?: string;
@@ -12,44 +13,42 @@ export interface SectionProps {
 export function Section({
   id,
   title,
+  highlight,
   subtitle,
   center = false,
   className,
   children,
 }: SectionProps) {
   return (
-    <section id={id} className={cn("py-16 md:py-24", className)}>
-      <div
-        className={cn(
-          "mx-auto max-w-6xl px-6 md:px-8",
-          center && "text-center"
-        )}
-      >
+    <section
+      id={id}
+      className={cn("px-6 py-20 md:py-28", className)}
+      style={{ backgroundColor: "#0d0d0d", color: "rgba(255,255,255,0.88)" }}
+    >
+      <div className={cn("mx-auto max-w-6xl", center && "text-center")}>
         {(title || subtitle) && (
-          <div className="mb-12 md:mb-16 space-y-4">
+          <div className="mb-12 md:mb-16">
             {title && (
               <h2
-                className={cn(
-                  "text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight",
-                  "text-[var(--color-accent)]",
-                  "font-[var(--font-display,inherit)]"
-                )}
+                className="mb-4 font-semibold uppercase tracking-wide text-white"
+                style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 0.95 }}
               >
                 {title}
-                <span
-                  className="block mt-3 h-[2px] w-16 bg-[var(--color-accent)]"
-                  style={center ? { margin: "0.75rem auto 0" } : undefined}
-                  aria-hidden="true"
-                />
+                {highlight && (
+                  <>
+                    {" "}
+                    <span style={{ color: "#ffffff" }}>{highlight}</span>
+                  </>
+                )}
               </h2>
             )}
             {subtitle && (
               <p
                 className={cn(
-                  "max-w-3xl text-base md:text-lg leading-relaxed",
-                  "text-[var(--color-muted-foreground)]",
+                  "max-w-2xl text-lg leading-relaxed",
                   center && "mx-auto"
                 )}
+                style={{ color: "rgba(255,255,255,0.6)" }}
               >
                 {subtitle}
               </p>

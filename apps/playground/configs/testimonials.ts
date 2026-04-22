@@ -10,6 +10,7 @@ export const testimonialsConfig: ComponentConfig = {
     { name: "heading", type: "text", label: "Heading", defaultValue: "What clients say" },
     { name: "description", type: "text", label: "Description", defaultValue: "Real words from real customers." },
     { name: "layout", type: "select", label: "Layout", options: ["grid", "carousel"], defaultValue: "grid" },
+    { name: "variant", type: "select", label: "Variant", options: ["quote-first", "avatar-first"], defaultValue: "quote-first" },
     { name: "columns", type: "select", label: "Columns", options: ["2", "3"], defaultValue: "3" },
   ],
   staticProps: {

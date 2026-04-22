@@ -108,20 +108,16 @@ export function DateRangePicker({
       <button
         onClick={() => setIsOpen(!isOpen)}
         type="button"
-        className={cn(
-          "flex items-center justify-between gap-3 w-full md:w-72",
-          "px-4 py-3 rounded-lg",
-          "bg-white/5 backdrop-blur-md",
-          "border border-white/10",
-          "text-[var(--color-foreground)]",
-          "transition-all duration-300",
-          "hover:border-[var(--color-accent)]/40 hover:bg-white/10",
-          "focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]",
-          isOpen && "border-[var(--color-accent)]/50"
-        )}
+        className="flex w-full items-center justify-between gap-3 rounded-sm px-4 py-3 transition-all md:w-72"
+        style={{
+          background: "rgba(255,255,255,0.06)",
+          border: `1px solid ${isOpen ? "#ffffff" : "rgba(255,255,255,0.1)"}`,
+          color: "#ffffff",
+        }}
       >
         <svg
-          className="h-4 w-4 shrink-0 text-[var(--color-accent)]"
+          className="h-4 w-4 shrink-0"
+          style={{ color: "#ffffff" }}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -137,10 +133,8 @@ export function DateRangePicker({
             : placeholder}
         </span>
         <svg
-          className={cn(
-            "h-4 w-4 shrink-0 text-[var(--color-muted-foreground)] transition-transform duration-200",
-            isOpen && "rotate-180"
-          )}
+          className={cn("h-4 w-4 shrink-0 transition-transform", isOpen && "rotate-180")}
+          style={{ color: "rgba(255,255,255,0.4)" }}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -152,23 +146,27 @@ export function DateRangePicker({
       {/* Dropdown */}
       {isOpen && (
         <div
-          className={cn(
-            "absolute z-50 mt-2 p-5 rounded-xl",
-            "bg-[var(--color-surface)] backdrop-blur-xl",
-            "border border-[var(--color-border)]",
-            "shadow-2xl shadow-black/20"
-          )}
+          className="absolute z-50 mt-2 rounded-xl p-5 backdrop-blur-xl"
+          style={{
+            background: "#141414",
+            border: "1px solid rgba(255,255,255,0.1)",
+            boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
+            color: "rgba(255,255,255,0.88)",
+          }}
         >
           {/* Month nav */}
-          <div className="flex items-center justify-between mb-5">
+          <div className="mb-5 flex items-center justify-between">
             <button
               onClick={handlePrevMonth}
               type="button"
-              className="flex h-8 w-8 items-center justify-center rounded-lg transition-colors hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-accent)]"
+              className="flex h-8 w-8 items-center justify-center rounded-sm transition-colors hover:text-white"
+              style={{ color: "rgba(255,255,255,0.88)" }}
             >
               <ChevronLeftIcon />
             </button>
-            <div className="text-sm font-semibold uppercase tracking-[0.1em] text-[var(--color-foreground)]">
+            <div
+              className="text-sm font-semibold uppercase tracking-wider text-white"
+            >
               {currentDate.toLocaleDateString("en-US", {
                 month: "long",
                 year: "numeric",
@@ -177,18 +175,20 @@ export function DateRangePicker({
             <button
               onClick={handleNextMonth}
               type="button"
-              className="flex h-8 w-8 items-center justify-center rounded-lg transition-colors hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-accent)]"
+              className="flex h-8 w-8 items-center justify-center rounded-sm transition-colors hover:text-white"
+              style={{ color: "rgba(255,255,255,0.88)" }}
             >
               <ChevronRightIcon />
             </button>
           </div>
 
           {/* Week day headers */}
-          <div className="grid grid-cols-7 gap-1 mb-2">
+          <div className="mb-2 grid grid-cols-7 gap-1">
             {weekDays.map((day) => (
               <div
                 key={day}
-                className="text-center text-[10px] font-semibold uppercase tracking-wider text-[var(--color-muted-foreground)] py-1"
+                className="py-1 text-center text-[10px] font-semibold uppercase tracking-wider"
+                style={{ color: "rgba(255,255,255,0.4)" }}
               >
                 {day}
               </div>
@@ -209,6 +209,12 @@ export function DateRangePicker({
               const isInRange =
                 isDateInRange(date) || isDateInHoverRange(date);
 
+              const style: React.CSSProperties = isSelected
+                ? { background: "#ffffff", color: "#000000" }
+                : isInRange
+                ? { background: "rgba(255,255,255,0.15)", color: "#ffffff" }
+                : { color: "rgba(255,255,255,0.88)" };
+
               return (
                 <button
                   key={date.getTime()}
@@ -216,20 +222,8 @@ export function DateRangePicker({
                   onClick={() => handleDateClick(date)}
                   onMouseEnter={() => setHoverDate(date)}
                   onMouseLeave={() => setHoverDate(null)}
-                  className={cn(
-                    "h-9 w-9 rounded-full flex items-center justify-center text-sm font-medium",
-                    "transition-all duration-200",
-                    isSelected && [
-                      "bg-[var(--color-accent)] text-white",
-                      "shadow-md shadow-[var(--color-accent)]/30",
-                    ],
-                    isInRange &&
-                      !isSelected &&
-                      "bg-[var(--color-accent)]/15 text-[var(--color-accent)]",
-                    !isSelected &&
-                      !isInRange &&
-                      "text-[var(--color-foreground)] hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-accent)]"
-                  )}
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-sm font-medium transition-all"
+                  style={style}
                 >
                   {date.getDate()}
                 </button>
@@ -238,26 +232,26 @@ export function DateRangePicker({
           </div>
 
           {/* Footer actions */}
-          <div className="mt-5 flex justify-end gap-2 border-t border-[var(--color-border)] pt-4">
+          <div
+            className="mt-5 flex justify-end gap-2 pt-4"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+          >
             <button
               type="button"
               onClick={() => {
                 onDateChange(null, null);
                 setSelecting("start");
               }}
-              className="px-4 py-2 rounded-lg text-sm font-medium text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] hover:bg-white/5 transition-colors duration-200"
+              className="rounded-sm px-4 py-2 text-sm font-medium transition-colors hover:text-white"
+              style={{ color: "rgba(255,255,255,0.4)" }}
             >
               Clear
             </button>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className={cn(
-                "px-4 py-2 rounded-lg text-sm font-semibold",
-                "bg-[var(--color-accent)] text-white",
-                "hover:brightness-110 active:scale-[0.98]",
-                "transition-all duration-200"
-              )}
+              className="rounded-sm px-4 py-2 text-sm font-semibold uppercase tracking-wider transition-all hover:brightness-110"
+              style={{ background: "#ffffff", color: "#000000" }}
             >
               Apply
             </button>
@@ -270,36 +264,16 @@ export function DateRangePicker({
 
 function ChevronLeftIcon() {
   return (
-    <svg
-      className="w-4 h-4 text-[var(--color-foreground)]"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M15 19l-7-7 7-7"
-      />
+    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
     </svg>
   );
 }
 
 function ChevronRightIcon() {
   return (
-    <svg
-      className="w-4 h-4 text-[var(--color-foreground)]"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9 5l7 7-7 7"
-      />
+    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
     </svg>
   );
 }

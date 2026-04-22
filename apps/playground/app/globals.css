@@ -57,21 +57,21 @@
 }
 
 .preview-panel.preview-dark {
-  --color-background: #0a0a0f;
-  --color-foreground: #f8fafc;
-  --color-surface: #16161d;
-  --color-surface-dark: #0a0a0f;
-  --color-card: #1a1a22;
-  --color-card-foreground: #f8fafc;
-  --color-text: #f8fafc;
-  --color-text-muted: #a1a1aa;
-  --color-border: #2a2a35;
-  --color-input: #2a2a35;
-  --color-muted: #16161d;
-  --color-muted-foreground: #71717a;
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-surface: #111111;
+  --color-surface-dark: #000000;
+  --color-card: #111111;
+  --color-card-foreground: #ffffff;
+  --color-text: #e5e5e5;
+  --color-text-muted: #888888;
+  --color-border: #262626;
+  --color-input: #262626;
+  --color-muted: #0a0a0a;
+  --color-muted-foreground: #888888;
 
-  color: #f8fafc;
-  background: #0a0a0f;
+  color: #e5e5e5;
+  background: #000000;
 }
 
 /* Shiki — transparent bg, monochrome, counter-based line numbers */

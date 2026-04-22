@@ -79,19 +79,22 @@ export function CopyButton({
       onClick={handleCopy}
       type="button"
       className={cn(
-        "inline-flex items-center gap-2.5 rounded-lg px-4 py-2.5 text-sm font-medium",
-        "bg-white/5 backdrop-blur-md",
-        "border border-white/10",
-        "text-[var(--color-foreground)]",
-        "transition-all duration-300 ease-out",
-        "hover:border-[var(--color-accent)]/40 hover:bg-white/10",
-        "active:scale-[0.98]",
-        copied && [
-          "border-emerald-500/50 bg-emerald-500/10",
-          "text-emerald-400",
-        ],
+        "inline-flex items-center gap-2.5 rounded-sm px-4 py-2.5 text-sm font-medium backdrop-blur-xl transition-all",
         className
       )}
+      style={
+        copied
+          ? {
+              background: "rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.4)",
+              color: "#ffffff",
+            }
+          : {
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "#ffffff",
+            }
+      }
     >
       <span className="relative flex h-4 w-4 items-center justify-center overflow-hidden">
         <span

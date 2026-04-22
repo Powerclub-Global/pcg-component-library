@@ -2,13 +2,11 @@ import { cn } from "../../lib/cn";
 
 export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-function Skeleton({ className, ...props }: SkeletonProps) {
+function Skeleton({ className, style, ...props }: SkeletonProps) {
   return (
     <div
-      className={cn(
-        "relative overflow-hidden rounded-md bg-[var(--color-muted,theme(colors.neutral.200))]/50",
-        className
-      )}
+      className={cn("relative overflow-hidden rounded-sm", className)}
+      style={{ background: "rgba(255,255,255,0.06)", ...style }}
       {...props}
     >
       <div

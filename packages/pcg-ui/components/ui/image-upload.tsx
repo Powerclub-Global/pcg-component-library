@@ -79,27 +79,28 @@ export function ImageUpload({
   };
 
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn("space-y-4", className)} style={{ color: "rgba(255,255,255,0.88)" }}>
       {value.length < maxFiles && (
         <div
           {...getRootProps()}
           className={cn(
-            "border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all",
-            isDragActive
-              ? "border-[var(--color-accent)] bg-[var(--color-accent)]/5"
-              : "border-[var(--color-border)] hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]/5",
+            "cursor-pointer rounded-xl p-8 text-center transition-all",
             uploading && "cursor-not-allowed opacity-50"
           )}
+          style={{
+            border: isDragActive ? "2px dashed #ffffff" : "2px dashed rgba(255,255,255,0.1)",
+            background: isDragActive ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.04)",
+          }}
         >
           <input {...getInputProps()} />
-          <div className="space-y-3">
-            <div className="font-semibold text-[var(--color-accent)]">
+          <div className="space-y-2">
+            <div className="font-semibold uppercase tracking-wider" style={{ color: "#ffffff" }}>
               {uploading ? "Uploading..." : label}
             </div>
-            <div className="text-sm text-[var(--color-muted-foreground)]">
+            <div className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
               Drag & drop images here, or click to select files
             </div>
-            <div className="text-xs text-[var(--color-muted-foreground)]">
+            <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
               Max {maxFiles} images
             </div>
           </div>
@@ -107,38 +108,35 @@ export function ImageUpload({
       )}
 
       {value.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {value.map((url, index) => (
-            <div key={index} className="relative group">
-              <div className="aspect-square rounded-xl overflow-hidden bg-[var(--color-muted)]">
+            <div key={index} className="group relative">
+              <div
+                className="aspect-square overflow-hidden rounded-sm"
+                style={{ background: "rgba(255,255,255,0.06)" }}
+              >
                 <img
                   src={url}
                   alt={`Upload ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
               <button
                 type="button"
                 onClick={() => removeImage(index)}
-                className="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute right-2 top-2 rounded-full p-1 opacity-0 transition-opacity hover:brightness-110 group-hover:opacity-100"
+                style={{ background: "#ffffff", color: "#000000" }}
                 title="Remove image"
               >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
               {index === 0 && (
-                <div className="absolute top-2 left-2 bg-[var(--color-accent)] text-white px-2 py-0.5 rounded text-xs font-bold">
+                <div
+                  className="absolute left-2 top-2 rounded-sm px-2 py-0.5 text-xs font-bold uppercase tracking-wider"
+                  style={{ background: "#ffffff", color: "#000000" }}
+                >
                   Primary
                 </div>
               )}
@@ -148,7 +146,7 @@ export function ImageUpload({
       )}
 
       {value.length > 0 && (
-        <div className="text-sm text-[var(--color-muted-foreground)]">
+        <div className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
           {value.length} of {maxFiles} images uploaded
         </div>
       )}

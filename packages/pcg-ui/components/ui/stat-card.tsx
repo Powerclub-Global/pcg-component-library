@@ -6,17 +6,11 @@ export interface StatCardTrend {
 }
 
 export interface StatCardProps {
-  /** Label above the value */
   title: string;
-  /** Primary display value */
   value: string | number;
-  /** Secondary text below the value */
   subtitle?: string;
-  /** Icon element rendered top-right */
   icon?: React.ReactNode;
-  /** Trend indicator */
   trend?: StatCardTrend;
-  /** Optional click handler */
   onClick?: () => void;
   className?: string;
 }
@@ -24,7 +18,8 @@ export interface StatCardProps {
 function TrendArrow({ positive }: { positive: boolean }) {
   return (
     <svg
-      className={cn("inline-block h-3.5 w-3.5 mr-0.5", positive ? "text-emerald-400" : "text-red-400")}
+      className="mr-0.5 inline-block h-3.5 w-3.5"
+      style={{ color: positive ? "#22c55e" : "#ffffff" }}
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -53,37 +48,42 @@ export function StatCard({
     <Wrapper
       onClick={onClick}
       className={cn(
-        "group relative rounded-xl p-6 text-left",
-        "border border-[var(--color-border)]",
-        "bg-[var(--color-surface)]",
-        "transition-all duration-300 ease-out",
-        "hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5",
-        "hover:border-[var(--color-accent)]/30",
+        "group relative rounded-xl p-6 text-left backdrop-blur-xl transition-all",
         onClick && "cursor-pointer",
         className
       )}
+      style={{
+        background: "rgba(255,255,255,0.06)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        color: "rgba(255,255,255,0.88)",
+      }}
     >
       <div className="flex items-start justify-between gap-4">
-        <div className="space-y-2 min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--color-muted-foreground)]">
+        <div className="min-w-0 space-y-2">
+          <p
+            className="text-xs font-semibold uppercase tracking-wider"
+            style={{ color: "rgba(255,255,255,0.4)" }}
+          >
             {title}
           </p>
-          <p className="text-3xl font-bold tracking-tight text-[var(--color-accent)]">
+          <p
+            className="font-bold tracking-tight text-white"
+            style={{ fontSize: "2rem", lineHeight: 0.95 }}
+          >
             {value}
           </p>
           {subtitle && (
-            <p className="text-sm text-[var(--color-muted-foreground)]">
+            <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
               {subtitle}
             </p>
           )}
           {trend && (
             <div
-              className={cn(
-                "inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold",
-                trend.positive
-                  ? "bg-emerald-500/10 text-emerald-400"
-                  : "bg-red-500/10 text-red-400"
-              )}
+              className="inline-flex items-center gap-1 rounded-sm px-2.5 py-0.5 text-xs font-semibold"
+              style={{
+                background: trend.positive ? "rgba(34,197,94,0.1)" : "rgba(255,255,255,0.1)",
+                color: trend.positive ? "#22c55e" : "#ffffff",
+              }}
             >
               <TrendArrow positive={trend.positive} />
               {trend.positive ? "+" : ""}
@@ -93,12 +93,11 @@ export function StatCard({
         </div>
         {icon && (
           <div
-            className={cn(
-              "flex h-11 w-11 shrink-0 items-center justify-center rounded-lg",
-              "bg-[var(--color-accent)]/10 text-[var(--color-accent)]",
-              "transition-colors duration-300",
-              "group-hover:bg-[var(--color-accent)]/20"
-            )}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm"
+            style={{
+              background: "rgba(255,255,255,0.1)",
+              color: "#ffffff",
+            }}
           >
             {icon}
           </div>

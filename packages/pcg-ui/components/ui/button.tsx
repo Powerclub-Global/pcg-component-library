@@ -7,50 +7,46 @@ import { cn } from "../../lib/cn";
 
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center whitespace-nowrap rounded-lg",
-    "font-semibold uppercase tracking-[0.15em]",
+    "inline-flex items-center justify-center whitespace-nowrap rounded-sm",
+    "font-semibold uppercase tracking-wider",
     "transition-all duration-300 ease-out",
-    "focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]",
-    "active:scale-[0.98]",
-    "disabled:pointer-events-none disabled:opacity-40",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d0d0d]",
+    "disabled:pointer-events-none disabled:opacity-50",
   ].join(" "),
   {
     variants: {
       variant: {
         default: [
-          "bg-[var(--color-accent)] text-white",
-          "shadow-md",
-          "hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] hover:brightness-110",
-          "active:brightness-95",
+          "bg-white text-black",
+          "hover:bg-white/90",
+          "active:bg-white/80",
         ].join(" "),
         outline: [
-          "border border-[var(--color-accent)] bg-transparent text-[var(--color-accent)]",
-          "hover:bg-[var(--color-accent)]/10",
-          "active:bg-[var(--color-accent)]/20",
+          "border border-white/30 bg-transparent text-white",
+          "hover:border-white hover:bg-white/5",
         ].join(" "),
         ghost: [
-          "bg-transparent text-[var(--color-foreground)]",
+          "bg-transparent text-white",
           "hover:bg-white/5",
           "active:bg-white/10",
         ].join(" "),
         link: [
-          "bg-transparent text-[var(--color-accent)]",
+          "bg-transparent text-white",
           "underline-offset-4 hover:underline",
           "p-0 h-auto normal-case tracking-normal font-medium",
         ].join(" "),
         destructive: [
-          "bg-red-600 text-white",
-          "hover:bg-red-700 hover:shadow-[0_0_30px_rgba(239,68,68,0.25)]",
-          "active:bg-red-800",
-          "shadow-md",
+          "bg-white text-black",
+          "hover:bg-white/90",
+          "active:bg-white/80",
         ].join(" "),
       },
       size: {
-        xs: "h-8 px-3 text-[10px] rounded-md",
-        sm: "h-10 px-5 text-xs",
-        default: "h-12 px-7 text-sm",
-        lg: "h-14 px-9 text-sm",
-        icon: "h-11 w-11 rounded-lg",
+        xs: "h-8 px-3 text-[10px]",
+        sm: "h-9 px-4 text-xs",
+        default: "h-11 px-6 text-sm",
+        lg: "h-14 px-8 text-base",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {

@@ -11,14 +11,13 @@ export interface HeroSectionProps {
   headline: string;
   subheadline?: string;
   ctas?: HeroCTA[];
-  background?: "gradient" | "image" | "video" | "solid";
+  background?: "solid" | "image" | "video";
   backgroundImage?: string;
   backgroundVideo?: string;
   backgroundOverlay?: boolean;
   textAlign?: "left" | "center";
   minHeight?: "sm" | "md" | "lg" | "full";
   showScrollIndicator?: boolean;
-  animate?: boolean;
   children?: React.ReactNode;
   className?: string;
 }
@@ -35,129 +34,146 @@ export function HeroSection({
   headline,
   subheadline,
   ctas = [],
-  background = "gradient",
+  background = "solid",
   backgroundImage,
   backgroundVideo,
   backgroundOverlay = true,
-  textAlign = "left",
-  minHeight = "md",
-  showScrollIndicator = false,
+  textAlign = "center",
+  minHeight = "full",
+  showScrollIndicator = true,
   children,
   className = "",
 }: HeroSectionProps) {
-  const alignClass = textAlign === "center" ? "text-center items-center" : "text-left items-start";
+  const alignClass =
+    textAlign === "center" ? "text-center items-center" : "text-left items-start";
 
   return (
     <section
       className={`relative overflow-hidden ${minHeightMap[minHeight]} ${className}`}
-      style={
-        background === "solid"
-          ? { backgroundColor: "var(--color-primary, #030712)" }
-          : undefined
-      }
+      style={{ backgroundColor: "#0d0d0d", color: "rgba(255,255,255,0.88)" }}
     >
-      {/* Background Layer */}
-      {background === "gradient" && (
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(180deg, #030712 0%, #0a1628 30%, #0d1b2a 50%, #0a1628 70%, #030712 100%)",
-          }}
-        />
-      )}
-
       {background === "image" && backgroundImage && (
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundImage})` }}
+          aria-hidden="true"
         />
       )}
 
       {background === "video" && backgroundVideo && (
         <video
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
           src={backgroundVideo}
           autoPlay
           muted
           loop
           playsInline
+          aria-hidden="true"
         />
       )}
 
-      {/* Overlay */}
       {backgroundOverlay && background !== "solid" && (
-        <div className="absolute inset-0 bg-black/30" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(13,13,13,0.7), rgba(13,13,13,0.5), #0d0d0d)",
+          }}
+        />
       )}
 
-      {/* Radial accent glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 50% 40%, rgba(var(--accent-rgb, 212 175 55), 0.04) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Top gradient separator */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/20 to-transparent" />
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col max-w-4xl ${alignClass} ${textAlign === "center" ? "mx-auto" : ""}`}>
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
+        <div className={`flex flex-col ${alignClass}`}>
           {eyebrow && (
-            <span className="inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-accent)] mb-6 opacity-90">
+            <span
+              className="mb-6 inline-block text-xs font-semibold uppercase tracking-widest"
+              style={{ color: "#ffffff" }}
+            >
               {eyebrow}
             </span>
           )}
 
-          <h1 className="font-[family-name:var(--font-display)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6">
+          <h1
+            className="mb-6 font-semibold uppercase text-white"
+            style={{
+              fontSize: "clamp(3rem, 9vw, 7rem)",
+              lineHeight: 0.95,
+              letterSpacing: "0.02em",
+            }}
+          >
             {headline}
           </h1>
 
-          {/* Decorative accent line */}
-          <div
-            className={`h-[2px] w-20 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent)]/30 mb-8 ${textAlign === "center" ? "mx-auto" : ""}`}
-          />
-
           {subheadline && (
-            <p className="text-base sm:text-lg text-white/60 mb-10 leading-relaxed max-w-2xl">
+            <p
+              className="mb-10 max-w-2xl text-lg sm:text-xl md:text-2xl tracking-wide"
+              style={{ color: "rgba(255,255,255,0.6)" }}
+            >
               {subheadline}
             </p>
           )}
 
           {ctas.length > 0 && (
-            <div className={`flex flex-wrap gap-4 ${textAlign === "center" ? "justify-center" : ""}`}>
-              {ctas.map((cta, i) => (
-                <Link
-                  key={i}
-                  href={cta.href}
-                  className={
-                    cta.variant === "outline"
-                      ? "relative border border-white/20 text-white hover:border-[var(--color-accent)]/40 hover:bg-white/[0.04] px-8 py-4 rounded-lg font-semibold tracking-wide text-sm uppercase transition-all duration-500 hover:shadow-[0_0_30px_rgba(var(--accent-rgb,212_175_55),0.1)]"
-                      : cta.variant === "secondary"
-                        ? "relative bg-white/[0.06] backdrop-blur-sm border border-white/[0.08] text-white hover:bg-white/[0.1] hover:border-white/[0.15] px-8 py-4 rounded-lg font-semibold tracking-wide text-sm uppercase transition-all duration-500"
-                        : "relative bg-[var(--color-accent)] text-white px-8 py-4 rounded-lg font-semibold tracking-wide text-sm uppercase transition-all duration-500 hover:shadow-[0_0_40px_rgba(var(--accent-rgb,212_175_55),0.3)] hover:brightness-110"
-                  }
-                >
-                  {cta.label}
-                </Link>
-              ))}
+            <div
+              className={`flex flex-col sm:flex-row gap-4 ${
+                textAlign === "center" ? "justify-center" : ""
+              }`}
+            >
+              {ctas.map((cta, i) => {
+                const base =
+                  "inline-block rounded-sm px-8 py-4 text-lg font-semibold uppercase tracking-wider transition-all";
+                const primary = {
+                  backgroundColor: "#ffffff",
+                  color: "#000000",
+                };
+                const outline = {
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  color: "#ffffff",
+                  backgroundColor: "transparent",
+                };
+                const secondary = {
+                  backgroundColor: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  color: "#ffffff",
+                  backdropFilter: "blur(20px)",
+                };
+                const style =
+                  cta.variant === "outline"
+                    ? outline
+                    : cta.variant === "secondary"
+                    ? secondary
+                    : primary;
+                return (
+                  <Link
+                    key={i}
+                    href={cta.href}
+                    className={`${base} hover:brightness-110`}
+                    style={style}
+                  >
+                    {cta.label}
+                  </Link>
+                );
+              })}
             </div>
           )}
 
-          {children && <div className="mt-10">{children}</div>}
+          {children && <div className="mt-10 w-full">{children}</div>}
         </div>
       </div>
 
-      {/* Bottom gradient separator */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/20 to-transparent" />
-
-      {/* Scroll Indicator */}
       {showScrollIndicator && (
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-white/30">Scroll</span>
-          <div className="w-[1px] h-8 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-accent)]/60 to-transparent animate-bounce" />
-          </div>
+        <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2">
+          <svg
+            className="h-8 w-8 animate-bounce"
+            style={{ color: "rgba(255,255,255,0.4)" }}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
         </div>
       )}
     </section>

@@ -3,13 +3,9 @@
 import { cn } from "../../lib/cn";
 
 export interface PaginationProps {
-  /** Current active page (1-indexed) */
   page: number;
-  /** Total number of pages */
   pages: number;
-  /** Callback when page changes */
   onPageChange: (page: number) => void;
-  /** Maximum number of visible page buttons */
   maxVisible?: number;
   className?: string;
 }
@@ -23,60 +19,28 @@ export function Pagination({
 }: PaginationProps) {
   if (pages <= 1) return null;
 
-  const renderPageNumbers = () => {
-    const items: React.ReactNode[] = [];
-    let startPage = Math.max(1, page - Math.floor(maxVisible / 2));
-    const endPage = Math.min(pages, startPage + maxVisible - 1);
+  const items: React.ReactNode[] = [];
+  let startPage = Math.max(1, page - Math.floor(maxVisible / 2));
+  const endPage = Math.min(pages, startPage + maxVisible - 1);
+  if (endPage - startPage < maxVisible - 1) {
+    startPage = Math.max(1, endPage - maxVisible + 1);
+  }
 
-    if (endPage - startPage < maxVisible - 1) {
-      startPage = Math.max(1, endPage - maxVisible + 1);
-    }
+  if (startPage > 1) {
+    items.push(<PageButton key={1} page={1} active={page === 1} onClick={onPageChange} />);
+    if (startPage > 2) items.push(<Ellipsis key="es" />);
+  }
 
-    if (startPage > 1) {
-      items.push(
-        <PageButton key={1} page={1} active={page === 1} onClick={onPageChange} />
-      );
-      if (startPage > 2) {
-        items.push(
-          <span
-            key="ellipsis-start"
-            className="flex h-10 w-8 items-center justify-center text-[var(--color-muted-foreground)]"
-          >
-            ...
-          </span>
-        );
-      }
-    }
+  for (let i = startPage; i <= endPage; i++) {
+    items.push(<PageButton key={i} page={i} active={page === i} onClick={onPageChange} />);
+  }
 
-    for (let i = startPage; i <= endPage; i++) {
-      items.push(
-        <PageButton key={i} page={i} active={page === i} onClick={onPageChange} />
-      );
-    }
-
-    if (endPage < pages) {
-      if (endPage < pages - 1) {
-        items.push(
-          <span
-            key="ellipsis-end"
-            className="flex h-10 w-8 items-center justify-center text-[var(--color-muted-foreground)]"
-          >
-            ...
-          </span>
-        );
-      }
-      items.push(
-        <PageButton
-          key={pages}
-          page={pages}
-          active={page === pages}
-          onClick={onPageChange}
-        />
-      );
-    }
-
-    return items;
-  };
+  if (endPage < pages) {
+    if (endPage < pages - 1) items.push(<Ellipsis key="ee" />);
+    items.push(
+      <PageButton key={pages} page={pages} active={page === pages} onClick={onPageChange} />
+    );
+  }
 
   return (
     <nav
@@ -88,13 +52,24 @@ export function Pagination({
         disabled={page <= 1}
         onClick={() => onPageChange(Math.max(1, page - 1))}
       />
-      {renderPageNumbers()}
+      {items}
       <NavButton
         direction="next"
         disabled={page >= pages}
         onClick={() => onPageChange(Math.min(pages, page + 1))}
       />
     </nav>
+  );
+}
+
+function Ellipsis() {
+  return (
+    <span
+      className="flex h-10 w-8 items-center justify-center text-sm"
+      style={{ color: "rgba(255,255,255,0.4)" }}
+    >
+      …
+    </span>
   );
 }
 
@@ -111,20 +86,16 @@ function PageButton({
     <button
       type="button"
       onClick={() => onClick(page)}
-      className={cn(
-        "h-10 min-w-[2.5rem] rounded-lg px-3 text-sm font-semibold",
-        "transition-all duration-200 ease-out",
-        "active:scale-[0.96]",
+      className="h-10 min-w-[2.5rem] rounded-sm px-3 text-sm font-semibold transition-all hover:brightness-110"
+      style={
         active
-          ? [
-              "bg-[var(--color-accent)] text-white",
-              "shadow-md shadow-[var(--color-accent)]/25",
-            ]
-          : [
-              "text-[var(--color-foreground)]",
-              "hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-accent)]",
-            ]
-      )}
+          ? { backgroundColor: "#ffffff", color: "#000000" }
+          : {
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              color: "rgba(255,255,255,0.88)",
+            }
+      }
     >
       {page}
     </button>
@@ -146,14 +117,12 @@ function NavButton({
       disabled={disabled}
       onClick={onClick}
       aria-label={direction === "prev" ? "Previous page" : "Next page"}
-      className={cn(
-        "flex h-10 items-center gap-1.5 rounded-lg border border-[var(--color-border)] px-4 text-sm font-medium",
-        "transition-all duration-200 ease-out",
-        "active:scale-[0.96]",
-        disabled
-          ? "cursor-not-allowed opacity-30"
-          : "text-[var(--color-foreground)] hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-accent)]"
-      )}
+      className="flex h-10 items-center gap-1.5 rounded-sm px-4 text-sm font-medium transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-30"
+      style={{
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        color: "rgba(255,255,255,0.88)",
+      }}
     >
       {direction === "prev" ? (
         <>

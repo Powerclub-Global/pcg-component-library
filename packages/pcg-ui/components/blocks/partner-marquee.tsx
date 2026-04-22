@@ -1,11 +1,12 @@
 export interface PartnerLogo {
   name: string;
-  src: string;
+  src?: string;
   href?: string;
 }
 
 export interface PartnerMarqueeProps {
-  logos: PartnerLogo[];
+  logos?: PartnerLogo[];
+  texts?: string[];
   heading?: string;
   speed?: "slow" | "normal" | "fast";
   direction?: "left" | "right";
@@ -14,14 +15,11 @@ export interface PartnerMarqueeProps {
   className?: string;
 }
 
-const speedMap = {
-  slow: "60s",
-  normal: "40s",
-  fast: "20s",
-};
+const speedMap = { slow: "60s", normal: "40s", fast: "20s" };
 
 export function PartnerMarquee({
   logos,
+  texts,
   heading,
   speed = "normal",
   direction = "left",
@@ -29,7 +27,9 @@ export function PartnerMarquee({
   logoHeight = 48,
   className = "",
 }: PartnerMarqueeProps) {
-  if (!logos || logos.length === 0) return null;
+  const hasLogos = logos && logos.length > 0;
+  const hasTexts = texts && texts.length > 0;
+  if (!hasLogos && !hasTexts) return null;
 
   const animationDirection = direction === "right" ? "reverse" : "normal";
   const duration = speedMap[speed];
@@ -43,66 +43,80 @@ export function PartnerMarquee({
         animationDirection,
       }}
     >
-      {logos.map((logo, i) => {
-        const img = (
-          <img
-            src={logo.src}
-            alt={logo.name}
-            style={{ height: logoHeight }}
-            className="object-contain opacity-40 hover:opacity-80 transition-opacity duration-500 grayscale hover:grayscale-0"
-            loading="lazy"
-          />
-        );
-
-        return (
-          <div key={`${key}-${i}`} className="flex-shrink-0 mx-10 sm:mx-14 flex items-center">
-            {logo.href ? (
-              <a href={logo.href} target="_blank" rel="noopener noreferrer" aria-label={logo.name}>
-                {img}
-              </a>
+      {hasLogos
+        ? logos!.map((logo, i) => {
+            const img = logo.src ? (
+              <img
+                src={logo.src}
+                alt={logo.name}
+                style={{ height: logoHeight }}
+                className="object-contain opacity-40 transition-opacity hover:opacity-80"
+                loading="lazy"
+              />
             ) : (
-              img
-            )}
-          </div>
-        );
-      })}
+              <span
+                className="font-semibold uppercase tracking-widest"
+                style={{
+                  fontSize: `${Math.max(logoHeight * 0.6, 24)}px`,
+                  color: "rgba(255,255,255,0.4)",
+                }}
+              >
+                {logo.name}
+              </span>
+            );
+            return (
+              <div key={`${key}-${i}`} className="mx-8 flex shrink-0 items-center">
+                {logo.href ? (
+                  <a href={logo.href} target="_blank" rel="noopener noreferrer" aria-label={logo.name}>
+                    {img}
+                  </a>
+                ) : (
+                  img
+                )}
+              </div>
+            );
+          })
+        : texts!.map((text, i) => (
+            <span
+              key={`${key}-${i}`}
+              className="px-4 text-2xl font-semibold uppercase tracking-widest sm:text-3xl md:text-4xl"
+              style={{ color: "rgba(255,255,255,0.4)" }}
+            >
+              {text}
+            </span>
+          ))}
     </div>
   );
 
   return (
-    <section className={`relative py-14 lg:py-20 ${className}`}>
-      {/* Top gradient separator */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/15 to-transparent" />
-
+    <section
+      className={`overflow-hidden py-5 ${className}`}
+      style={{
+        backgroundColor: "#141414",
+        borderTop: "1px solid rgba(255,255,255,0.1)",
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
+      }}
+    >
       {heading && (
-        <div className="text-center mb-10">
-          <h3 className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted,#666)]/60">
+        <div className="mb-4 text-center">
+          <h3
+            className="text-[10px] font-semibold uppercase tracking-widest"
+            style={{ color: "rgba(255,255,255,0.4)" }}
+          >
             {heading}
           </h3>
         </div>
       )}
 
-      <div className="relative">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-[var(--color-surface,#ffffff)] to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-[var(--color-surface,#ffffff)] to-transparent pointer-events-none" />
-
-        <div
-          className={`overflow-hidden ${pauseOnHover ? "[&:hover_div]:![animation-play-state:paused]" : ""}`}
-        >
-          <div className="flex">
-            {renderSet("a")}
-            {renderSet("b")}
-            {renderSet("c")}
-            {renderSet("d")}
-          </div>
-        </div>
+      <div
+        className={`flex whitespace-nowrap ${
+          pauseOnHover ? "[&:hover_div]:![animation-play-state:paused]" : ""
+        }`}
+      >
+        {renderSet("a")}
+        {renderSet("b")}
       </div>
 
-      {/* Bottom gradient separator */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/15 to-transparent" />
-
-      {/* Inline keyframes */}
       <style>{`
         @keyframes pcg-marquee-scroll {
           from { transform: translateX(0); }

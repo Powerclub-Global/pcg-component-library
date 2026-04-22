@@ -2,7 +2,7 @@ export interface TrustBadge {
   id: string;
   label: string;
   shortLabel?: string;
-  image: string;
+  image?: string;
 }
 
 export interface TrustBadgesProps {
@@ -27,53 +27,74 @@ export function TrustBadges({
   if (!badges || badges.length === 0) return null;
 
   return (
-    <div className={className}>
-      {heading && (
-        <div className="text-[10px] text-[var(--color-text-muted,#666)]/60 mb-4 font-semibold uppercase tracking-[0.25em]">
-          {heading}
-        </div>
-      )}
+    <div
+      className={`px-6 py-10 ${className}`}
+      style={{ backgroundColor: "#0d0d0d", color: "rgba(255,255,255,0.88)" }}
+    >
+      <div className="mx-auto max-w-6xl">
+        {heading && (
+          <p
+            className="mb-6 text-center text-xs font-semibold uppercase tracking-widest"
+            style={{ color: "rgba(255,255,255,0.4)" }}
+          >
+            {heading}
+          </p>
+        )}
 
-      <div
-        className={
-          layout === "grid"
-            ? "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
-            : "flex items-center flex-wrap"
-        }
-      >
-        {badges.map((badge, index) => (
-          <div key={badge.id} className="flex items-center">
+        <div
+          className={
+            layout === "grid"
+              ? "grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4"
+              : "flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+          }
+        >
+          {badges.map((badge) => (
             <div
-              className="flex items-center gap-3 px-4 py-2 group"
+              key={badge.id}
+              className="flex items-center gap-3"
               title={badge.label}
+              style={{ color: "rgba(255,255,255,0.6)" }}
             >
-              <img
-                src={badge.image}
-                alt={badge.label}
-                style={{ height: badgeSize, width: badgeSize }}
-                className="object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                loading="lazy"
-              />
+              {badge.image ? (
+                <img
+                  src={badge.image}
+                  alt={badge.label}
+                  style={{ height: badgeSize, width: badgeSize }}
+                  className="object-contain opacity-60 transition-opacity hover:opacity-100"
+                  loading="lazy"
+                />
+              ) : (
+                <div
+                  className="flex items-center justify-center rounded-sm text-xs font-bold uppercase"
+                  style={{
+                    height: badgeSize,
+                    width: badgeSize,
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "rgba(255,255,255,0.6)",
+                  }}
+                >
+                  {badge.label.charAt(0)}
+                </div>
+              )}
               {showLabels && (
-                <span className="text-xs text-[var(--color-text-muted,#666)]/70 hidden sm:inline font-medium tracking-wide">
+                <span className="text-xs font-medium tracking-wide">
                   {badge.shortLabel || badge.label}
                 </span>
               )}
             </div>
+          ))}
+        </div>
 
-            {/* Subtle divider between items in row layout */}
-            {layout === "row" && index < badges.length - 1 && (
-              <div className="hidden md:block h-6 w-px bg-gradient-to-b from-transparent via-[var(--color-border,#e5e5e5)]/30 to-transparent mx-1" />
-            )}
-          </div>
-        ))}
+        {description && (
+          <p
+            className="mt-4 text-center text-xs leading-relaxed"
+            style={{ color: "rgba(255,255,255,0.4)" }}
+          >
+            {description}
+          </p>
+        )}
       </div>
-
-      {description && (
-        <p className="text-xs text-[var(--color-text-muted,#666)]/50 mt-3 leading-relaxed">
-          {description}
-        </p>
-      )}
     </div>
   );
 }
