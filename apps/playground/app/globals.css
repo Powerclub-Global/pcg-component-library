@@ -80,7 +80,7 @@
   padding: 1rem 1.25rem 1rem 0;
   counter-reset: line;
   font-size: 0.8rem;
-  line-height: 1.1;
+  line-height: 0.8;
   margin: 0;
 }
 .shiki-wrap pre.shiki code {
