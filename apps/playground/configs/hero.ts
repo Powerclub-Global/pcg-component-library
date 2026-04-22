@@ -69,8 +69,8 @@ export const heroConfig: ComponentConfig = {
   ],
   staticProps: {
     ctas: [
-      { label: "Get Started", href: "#", variant: "primary" },
-      { label: "Learn More", href: "#", variant: "outline" },
+      { label: "Get Started", href: "#start", variant: "primary" },
+      { label: "Learn More", href: "#learn", variant: "outline" },
     ],
   },
 };

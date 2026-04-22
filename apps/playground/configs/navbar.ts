@@ -33,10 +33,10 @@ export const navbarConfig: ComponentConfig = {
     logo: "PCG",
     logoHref: "/",
     navItems: [
-      { label: "Products", href: "#" },
-      { label: "About", href: "#" },
-      { label: "Contact", href: "#" },
+      { label: "Products", href: "#products" },
+      { label: "About", href: "#about" },
+      { label: "Contact", href: "#contact" },
     ],
-    cta: { label: "Get Started", href: "#", variant: "primary" },
+    cta: { label: "Get Started", href: "#cta", variant: "primary" },
   },
 };

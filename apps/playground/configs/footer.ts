@@ -18,31 +18,31 @@ export const footerConfig: ComponentConfig = {
       {
         title: "Product",
         links: [
-          { label: "Features", href: "#" },
-          { label: "Pricing", href: "#" },
-          { label: "Docs", href: "#" },
+          { label: "Features", href: "#features" },
+          { label: "Pricing", href: "#pricing" },
+          { label: "Docs", href: "#docs" },
         ],
       },
       {
         title: "Company",
         links: [
-          { label: "About", href: "#" },
-          { label: "Blog", href: "#" },
-          { label: "Careers", href: "#" },
+          { label: "About", href: "#about" },
+          { label: "Blog", href: "#blog" },
+          { label: "Careers", href: "#careers" },
         ],
       },
       {
         title: "Legal",
         links: [
-          { label: "Privacy", href: "#" },
-          { label: "Terms", href: "#" },
+          { label: "Privacy", href: "#privacy" },
+          { label: "Terms", href: "#terms" },
         ],
       },
     ],
     socialLinks: [
-      { platform: "twitter", href: "#" },
-      { platform: "instagram", href: "#" },
-      { platform: "linkedin", href: "#" },
+      { platform: "twitter", href: "https://twitter.com" },
+      { platform: "instagram", href: "https://instagram.com" },
+      { platform: "linkedin", href: "https://linkedin.com" },
     ],
     contact: {
       email: "hello@pcg.com",

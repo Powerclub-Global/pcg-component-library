@@ -19,7 +19,7 @@ export const pricingSectionConfig: ComponentConfig = {
         priceSubtext: "/ month",
         description: "For individuals getting started.",
         features: ["1 project", "5 components", "Community support"],
-        cta: { label: "Start free", href: "#" },
+        cta: { label: "Start free", href: "#start" },
       },
       {
         name: "Pro",
@@ -27,7 +27,7 @@ export const pricingSectionConfig: ComponentConfig = {
         priceSubtext: "/ month",
         description: "For growing teams.",
         features: ["Unlimited projects", "All components", "Priority support", "Custom themes"],
-        cta: { label: "Get Pro", href: "#" },
+        cta: { label: "Get Pro", href: "#pro" },
         popular: true,
       },
       {
@@ -35,7 +35,7 @@ export const pricingSectionConfig: ComponentConfig = {
         price: "Custom",
         description: "For organizations.",
         features: ["SSO", "Dedicated support", "SLA", "On-premise option"],
-        cta: { label: "Contact us", href: "#" },
+        cta: { label: "Contact us", href: "#contact" },
       },
     ],
   },
